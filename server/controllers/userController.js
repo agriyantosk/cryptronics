@@ -39,18 +39,27 @@ class UserController {
                 },
             });
             if (!checkEmail) {
-                throw { name: "Invalid Email" };
+                throw { name: "Invalid email/password" };
             } else {
                 const access = checkPassword(checkEmail.password, password);
                 if (!access) {
-                    throw { name: "Invalid Password" };
+                    throw { name: "Invalid email/password" };
                 } else {
                     const access_token = signToken({ id: checkEmail.id });
                     res.status(200).json({ access_token });
                 }
             }
         } catch (error) {
-            next(error)
+            next(error);
+        }
+    }
+
+    static async changePassword(req, res, next) {
+        try {
+            console.log("authentication berhasil")
+
+        } catch (error) {
+            next(error);
         }
     }
 }

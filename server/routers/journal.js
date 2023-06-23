@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.get("/fetch", JournalController.fetch)
 router.post("/add", JournalController.add)
+router.delete("/delete", JournalController.delete)
 
 module.exports = router

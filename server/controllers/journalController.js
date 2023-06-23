@@ -1,6 +1,18 @@
 const { Journal } = require("../models");
 
 class JournalController {
+    static async fetch(req, res, next) {
+        try {
+            const fetchPlanner = await Journal.findAll({
+                where: { UserId: req.user.id },
+                order: [['id', 'ASC']]
+            });
+            res.status(200).json(fetchPlanner)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async add(req, res, next) {
         try {
             const {
@@ -18,6 +30,7 @@ class JournalController {
                 ratio,
                 profitOrLoss,
                 result,
+                UserId: req.user.id
             });
             res.status(201).json({ message: "Journal added successfully" });
         } catch (error) {

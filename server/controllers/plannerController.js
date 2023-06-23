@@ -1,6 +1,18 @@
-const { Planner, Journal } = require("../models");
+const { Planner } = require("../models");
 
 class PlannerController {
+    static async fetch(req, res, next) {
+        try {
+            const fetchPlanner = await Planner.findAll({
+                where: { UserId: req.user.id },
+                order: [['id', 'ASC']]
+            });
+            res.status(200).json(fetchPlanner)
+        } catch (error) {
+            next(error);
+        }
+    }
+    
     static async add(req, res, next) {
         try {
             const { cryptoName, entryPrice, exitPrice, ratio } = req.body;
@@ -10,6 +22,7 @@ class PlannerController {
                 exitPrice,
                 ratio,
                 status: "Planned",
+                UserId: req.user.id,
             });
             res.status(201).json({ message: "Plan added successfully" });
         } catch (error) {
@@ -27,6 +40,7 @@ class PlannerController {
                     exitPrice,
                     ratio,
                     status: "Planned",
+                    UserId: req.user.id,
                 },
                 {
                     where: {
@@ -69,9 +83,6 @@ class PlannerController {
                         },
                     }
                 );
-                const addJournal = await Journal.create({
-                    // nanti aja bikin journal nya dulu aja si
-                })
             }
         } catch (error) {
             next(error);

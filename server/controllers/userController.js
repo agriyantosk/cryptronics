@@ -1,4 +1,4 @@
-const { checkPassword } = require("../helpers/bcrypt");
+const { checkPassword, hashPassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
@@ -56,9 +56,40 @@ class UserController {
 
     static async changePassword(req, res, next) {
         try {
-            console.log("authentication berhasil")
-
+            let { currentPassword, newPassword } = req.body;
+            if (currentPassword === newPassword) {
+                throw { name: "Invalid password input" };
+            } else {
+                const user = await User.findOne({
+                    where: {
+                        id: req.user.id,
+                    },
+                });
+                const passValidation = checkPassword(
+                    user.password,
+                    currentPassword
+                );
+                if (!passValidation) {
+                    throw { name: "Invalid email/password" };
+                } else {
+                    newPassword = hashPassword(newPassword);
+                    const updatePassword = await User.update(
+                        {
+                            password: newPassword,
+                        },
+                        {
+                            where: {
+                                id: req.user.id,
+                            },
+                        }
+                    );
+                    res.status(201).json({
+                        message: "Password changed successfully",
+                    });
+                }
+            }
         } catch (error) {
+            console.log(error);
             next(error);
         }
     }

@@ -5,11 +5,11 @@ class JournalController {
         try {
             const fetchJournal = await Journal.findAll({
                 where: { UserId: req.user.id },
-                order: [['id', 'ASC']]
+                order: [["id", "ASC"]],
             });
-            res.status(200).json(fetchJournal)
+            res.status(200).json(fetchJournal);
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
@@ -19,6 +19,7 @@ class JournalController {
                 cryptoName,
                 entryPrice,
                 exitPrice,
+                tradeWeight,
                 ratio,
                 profitOrLoss,
                 result,
@@ -27,10 +28,11 @@ class JournalController {
                 cryptoName,
                 entryPrice,
                 exitPrice,
+                tradeWeight,
                 ratio,
                 profitOrLoss,
                 result,
-                UserId: req.user.id
+                UserId: req.user.id,
             });
             res.status(201).json({ message: "Journal added successfully" });
         } catch (error) {

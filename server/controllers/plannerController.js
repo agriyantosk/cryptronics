@@ -5,14 +5,14 @@ class PlannerController {
         try {
             const fetchPlanner = await Planner.findAll({
                 where: { UserId: req.user.id },
-                order: [['id', 'ASC']]
+                order: [["id", "ASC"]],
             });
-            res.status(200).json(fetchPlanner)
+            res.status(200).json(fetchPlanner);
         } catch (error) {
             next(error);
         }
     }
-    
+
     static async add(req, res, next) {
         try {
             const { cryptoName, entryPrice, exitPrice, ratio } = req.body;
@@ -20,6 +20,7 @@ class PlannerController {
                 cryptoName,
                 entryPrice,
                 exitPrice,
+                tradeWeight,
                 ratio,
                 status: "Planned",
                 UserId: req.user.id,
@@ -38,6 +39,7 @@ class PlannerController {
                     cryptoName,
                     entryPrice,
                     exitPrice,
+                    tradeWeight,
                     ratio,
                     status: "Planned",
                     UserId: req.user.id,

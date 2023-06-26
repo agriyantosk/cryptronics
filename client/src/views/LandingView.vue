@@ -1,0 +1,38 @@
+<template>
+  <div class="h-screen">
+    <Navbar />
+    <div class="flex justify-center items-center m-[10%]">
+      <div class="flex flex-col gap-3">
+        <div>
+          <p class="text-white font font-medium text-2xl mb-2">Get 25% first visit discount</p>
+          <h1 class="text-white font font-extrabold text-7xl mb-2">Track Your</h1>
+          <h1 class="text-white font font-extrabold text-7xl mb-2">Crypto Portfolio</h1>
+          <p class="text-white font font-light text-2xl mb-2">
+            Explore the market and easily each and every of your trade
+          </p>
+        </div>
+        <button
+          class="text-white bg-green-500 rounded-lg px-5 py-3 w-64 hover:bg-green-400"
+        >
+          Let's Get Started ->
+        </button>
+        <div>
+          <p>1400+ Active Users | 100+ Listed Coins</p>
+        </div>
+      </div>
+      <div>
+        <img
+          src="../assets/image_processing20210228-17957-1u9zch4-removebg-preview.png"
+          alt="Crypto Chart Picture"
+          class="w-[100%] h-[100%]"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import Navbar from '../components/Navbar.vue'
+</script>
+
+<style scoped></style>

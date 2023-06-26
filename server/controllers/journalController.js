@@ -3,11 +3,11 @@ const { Journal } = require("../models");
 class JournalController {
     static async fetch(req, res, next) {
         try {
-            const fetchPlanner = await Journal.findAll({
+            const fetchJournal = await Journal.findAll({
                 where: { UserId: req.user.id },
                 order: [['id', 'ASC']]
             });
-            res.status(200).json(fetchPlanner)
+            res.status(200).json(fetchJournal)
         } catch (error) {
             next(error)
         }

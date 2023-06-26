@@ -21,27 +21,27 @@ module.exports = {
          * Example:
          * await queryInterface.bulkDelete('People', null, {});
          */
-        await queryInterface.bulkDelete("User", null, {
+        await queryInterface.bulkDelete("Users", null, {
             truncate: true,
             restartIdentity: true,
             cascade: true,
         });
-        await queryInterface.bulkDelete("Journal", null, {
+        await queryInterface.bulkDelete("Journals", null, {
             truncate: true,
             restartIdentity: true,
             cascade: true,
         });
-        await queryInterface.bulkDelete("Planner", null, {
+        await queryInterface.bulkDelete("Planners", null, {
             truncate: true,
             restartIdentity: true,
             cascade: true,
         });
-        await queryInterface.bulkDelete("Coin_Watchlist", null, {
+        await queryInterface.bulkDelete("Coin_Watchlists", null, {
             truncate: true,
             restartIdentity: true,
             cascade: true,
         });
-        await queryInterface.bulkDelete("Launch_Watchlist", null, {
+        await queryInterface.bulkDelete("Launch_Watchlists", null, {
             truncate: true,
             restartIdentity: true,
             cascade: true,

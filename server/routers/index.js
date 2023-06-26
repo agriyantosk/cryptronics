@@ -6,12 +6,14 @@ const userRouter = require("./user");
 const plannerRouter = require("./planner");
 const journalRouter = require("./journal");
 const launchRouter = require("./launchWatchlist");
+const coinRouter = require("./coinWatchlist");
 
 router.use("/user", userRouter);
 router.use(authentication);
 router.use("/planner", plannerRouter);
 router.use("/journal", journalRouter);
 router.use("/launch", launchRouter);
+router.use("/coin", coinRouter);
 router.use(errorHandler);
 
 module.exports = router;

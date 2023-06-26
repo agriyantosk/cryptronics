@@ -2,17 +2,19 @@
   <div class="flex justify-around">
     <div class="w-[50%] flex flex-col justify-center items-center gap-10">
       <div class="px-4 py-4">
-        <a href="#" class="flex items-center">
-          <img
-            src="https://cryptologos.cc/logos/celo-celo-logo.png"
-            class="h-8 mr-3"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-white"
-            >Cryptronics</span
-          >
-        </a>
+        <RouterLink to="/">
+          <a href="#" class="flex items-center">
+            <img
+              src="https://cryptologos.cc/logos/celo-celo-logo.png"
+              class="h-8 mr-3"
+              alt="Cryptronics Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-white"
+              >Cryptronics</span
+            >
+          </a>
+        </RouterLink>
       </div>
       <div class="flex flex-col items-center gap-4">
         <h1 class="font-bold text-7xl text-white">Hi there!</h1>
@@ -28,7 +30,12 @@
         <SigninForm />
       </div>
       <div>
-        <h1>Don't have an account? <a href="#" class="underline text-blue-500">Sign up</a></h1>
+        <h1>
+          Don't have an account?
+          <RouterLink to="/sign-up">
+            <a href="#" class="underline text-blue-500">Sign up</a>
+          </RouterLink>
+        </h1>
       </div>
     </div>
     <div class="right-0">
@@ -42,6 +49,7 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
 import SigninForm from '../components/SigninForm.vue'
 </script>
 

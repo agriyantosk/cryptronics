@@ -11,11 +11,11 @@
             Explore the market and easily each and every of your trade
           </p>
         </div>
-        <button
-          class="text-white bg-green-500 rounded-lg px-5 py-3 w-64 hover:bg-green-400"
-        >
-          Let's Get Started ->
-        </button>
+        <RouterLink to="/sign-in">
+          <button class="text-white bg-green-500 rounded-lg px-5 py-3 w-64 hover:bg-green-400">
+            Let's Get Started ->
+          </button>
+        </RouterLink>
         <div>
           <p>1400+ Active Users | 100+ Listed Coins</p>
         </div>
@@ -33,6 +33,7 @@
 
 <script setup>
 import Navbar from '../components/Navbar.vue'
+import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped></style>

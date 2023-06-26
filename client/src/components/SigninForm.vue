@@ -31,7 +31,6 @@
 
 <script setup>
 import { useMainStore } from '../stores/counter'
-import { mapActions } from 'pinia'
 
 const form = {
   email: '',
@@ -40,7 +39,6 @@ const form = {
 
 const mainStore = useMainStore()
 
-// const methods = mapActions(mainStore, ['login'])
 const handleSubmit = (event) => {
   event.preventDefault()
   mainStore.login(form)

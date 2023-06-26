@@ -3,13 +3,6 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 export const useMainStore = defineStore('main', {
-  // const count = ref(0)
-  // const doubleCount = computed(() => count.value * 2)
-  // function increment() {
-  //   count.value++
-  // }
-
-  // return { count, doubleCount, increment }
   state: () => ({
     baseUrl: 'http://localhost:3000',
     access_token: '',
@@ -41,7 +34,7 @@ export const useMainStore = defineStore('main', {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: `${error.response.data.message}`,
+          text: `${error.response.data.message}`
         })
       }
     },
@@ -53,8 +46,21 @@ export const useMainStore = defineStore('main', {
           url: `${this.baseUrl}/user/register`,
           data: data
         })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.push('/sign-in')
       } catch (error) {
         console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
       }
     }
   }

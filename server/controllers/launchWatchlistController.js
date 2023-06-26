@@ -9,7 +9,7 @@ class LaunchWatchlistController {
                 },
                 order: [["id", "ASC"]],
             });
-            res.status(200).json({ fetchWatchlist });
+            res.status(200).json(fetchWatchlist);
         } catch (error) {
             next(error);
         }

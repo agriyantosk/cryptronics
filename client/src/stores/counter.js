@@ -105,6 +105,34 @@ export const useMainStore = defineStore('main', {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    async addPlanner(data) {
+      try {
+        const response = await axios({
+          method: 'POST',
+          url: `${this.baseUrl}/planner/add`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.push('/home')
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
     }
   }
 })

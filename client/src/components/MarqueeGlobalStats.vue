@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-2">
     <marquee behavior="scroll" direction="left">
       <div class="flex gap-3">
         Cryptos: <span class="text-green-400">{{ mainStore.globalStats.data?.totalCoins }}</span> |

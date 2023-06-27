@@ -29,65 +29,89 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
             entryPrice: {
-              type: DataTypes.DECIMAL,
-              allowNull: false,
-              validate: {
-                  notNull: {
-                      message: "Entry Price is required",
-                  },
-                  notEmpty: {
-                      message: "Entry Price is required",
-                  },
-              },
-          },
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Entry Price is required",
+                    },
+                    notEmpty: {
+                        message: "Entry Price is required",
+                    },
+                },
+            },
             exitPrice: {
-              type: DataTypes.DECIMAL,
-              allowNull: false,
-              validate: {
-                  notNull: {
-                      message: "Exit Price is required",
-                  },
-                  notEmpty: {
-                      message: "Exit Price is required",
-                  },
-              },
-          },
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Exit Price is required",
+                    },
+                    notEmpty: {
+                        message: "Exit Price is required",
+                    },
+                },
+            },
+            tradeWeight: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Trade Weight is required",
+                    },
+                    notEmpty: {
+                        message: "Trade Weight is required",
+                    },
+                },
+            },
             ratio: {
-              type: DataTypes.DECIMAL,
-              allowNull: false,
-              validate: {
-                  notNull: {
-                      message: "Ratio is required",
-                  },
-                  notEmpty: {
-                      message: "Ratio is required",
-                  },
-              },
-          },
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Ratio is required",
+                    },
+                    notEmpty: {
+                        message: "Ratio is required",
+                    },
+                },
+            },
+            percentage: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Percentage is required",
+                    },
+                    notEmpty: {
+                        message: "Percentage is required",
+                    },
+                },
+            },
             profitOrLoss: {
-              type: DataTypes.DECIMAL,
-              allowNull: false,
-              validate: {
-                  notNull: {
-                      message: "Profit or Loss result is required",
-                  },
-                  notEmpty: {
-                      message: "Profit or Loss result is required",
-                  },
-              },
-          },
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Profit or Loss result is required",
+                    },
+                    notEmpty: {
+                        message: "Profit or Loss result is required",
+                    },
+                },
+            },
             result: {
-              type: DataTypes.STRING,
-              allowNull: false,
-              validate: {
-                  notNull: {
-                      message: "Result is required",
-                  },
-                  notEmpty: {
-                      message: "Result is required",
-                  },
-              },
-          },
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Result is required",
+                    },
+                    notEmpty: {
+                        message: "Result is required",
+                    },
+                },
+            },
             UserId: DataTypes.INTEGER,
         },
         {

@@ -53,14 +53,14 @@ class PlannerController {
             );
             res.status(201).json({ message: "Plan edited successfully" });
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
     static async delete(req, res, next) {
         try {
             const { id } = req.body;
-            console.log(id, ">>>")
+            console.log(id, ">>>");
             const deletePlan = await Planner.destroy({
                 where: {
                     id,
@@ -79,17 +79,24 @@ class PlannerController {
             if (!findPlan) {
                 throw { name: "Data not found" };
             } else {
-                const executePlan = await Planner.update(
-                    {
-                        status: "Executed",
-                    },
-                    {
-                        where: {
-                            id,
+                if (findPlan.status === "Executed") {
+                    throw { name: "You already executed this plan" };
+                } else {
+                    const executePlan = await Planner.update(
+                        {
+                            status: "Executed",
                         },
-                    }
-                );
-                res.status(200).json({message: "Congrats! You've executed your plan"})
+                        {
+                            where: {
+                                id,
+                            },
+                        }
+                    );
+                    res.status(200).json({
+                        message: "Congrats! You've executed your plan",
+                        findPlan,
+                    });
+                }
             }
         } catch (error) {
             next(error);

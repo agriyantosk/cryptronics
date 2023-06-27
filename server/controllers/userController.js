@@ -47,7 +47,7 @@ class UserController {
                     throw { name: "Invalid email/password" };
                 } else {
                     const access_token = signToken({ id: checkEmail.id });
-                    res.status(200).json({ access_token, firstName: checkEmail.firstName, lastname: checkEmail.lastName });
+                    res.status(200).json({ access_token, firstName: checkEmail.firstName, lastName: checkEmail.lastName });
                 }
             }
         } catch (error) {

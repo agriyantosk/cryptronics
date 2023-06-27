@@ -1,9 +1,9 @@
 <template>
   <div>
-    <MarqueeGlobalStats />
     <LoggedNavbar />
     <div class="mt-6">
       <HomeHeader />
+      <MarqueeGlobalStats />
       <CryptoTable />
     </div>
   </div>

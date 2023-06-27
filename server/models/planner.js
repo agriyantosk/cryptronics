@@ -52,6 +52,18 @@ module.exports = (sequelize, DataTypes) => {
                     },
                 },
             },
+            tradeWeight: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Exit price is required",
+                    },
+                    notEmpty: {
+                        messge: "Exit price is required",
+                    },
+                },
+            },
             ratio: {
                 type: DataTypes.DECIMAL,
                 allowNull: false,

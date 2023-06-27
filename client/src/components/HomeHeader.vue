@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="p-6">
+    <div class="p-4">
       <div class="px-6 mb-6">
         <h1 class="text-white text-2xl font-bold">Today's Highlights by Cryptronics</h1>
       </div>

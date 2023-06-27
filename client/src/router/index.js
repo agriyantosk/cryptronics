@@ -3,6 +3,7 @@ import LandingView from '../views/LandingView.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 import HomeView from '../views/HomeView.vue'
+import CalculatorView from '../views/CalculatorView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/calculator',
+    name: 'calculator',
+    component: CalculatorView
   }
 ]
 

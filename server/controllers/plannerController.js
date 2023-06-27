@@ -15,7 +15,9 @@ class PlannerController {
 
     static async add(req, res, next) {
         try {
-            const { cryptoName, entryPrice, exitPrice, ratio } = req.body;
+            console.log(req.body, ">>>>")
+            const { cryptoName, entryPrice, exitPrice, tradeWeight, ratio } =
+                req.body;
             const addPlan = await Planner.create({
                 cryptoName,
                 entryPrice,
@@ -27,6 +29,7 @@ class PlannerController {
             });
             res.status(201).json({ message: "Plan added successfully" });
         } catch (error) {
+            console.log(error);
             next(error);
         }
     }

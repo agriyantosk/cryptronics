@@ -53,15 +53,24 @@
                 >
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400">Plans</a>
+                <RouterLink to="/planner">
+                  <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
+                    >Plans</a
+                  >
+                </RouterLink>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
-                  >Journal</a
-                >
+                <RouterLink to="/journal">
+                  <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
+                    >Journal</a
+                  >
+                </RouterLink>
               </li>
               <li>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
+                <a
+                  @click.prevent="mainStore.logout()"
+                  href="#"
+                  class="block px-4 py-2 text-sm text-white hover:bg-green-400"
                   >Sign out</a
                 >
               </li>
@@ -139,6 +148,8 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import { useMainStore } from '../stores/counter'
+const mainStore = useMainStore()
 const firstName = localStorage.getItem('firstName')
 const lastName = localStorage.getItem('lastName')
 </script>

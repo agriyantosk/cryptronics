@@ -66,13 +66,13 @@
           <button
             @click.prevent="calc(form)"
             type="button"
-            class="px-2 h-12 inline-flex items-center justify-center mb-2 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none"
+            class="px-6 h-10 rounded-lg inline-flex items-center justify-center mb-2 font-medium tracking-wide text-white transition duration-200 shadow-md bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none"
           >
             Calculate
           </button>
           <button
             type="submit"
-            class="px-2 h-12 inline-flex items-center justify-center ml-4 mb-2 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none"
+            class="px-6 h-10 rounded-lg inline-flex items-center justify-center ml-4 mb-2 font-medium tracking-wide text-white transition duration-200 shadow-md bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none"
           >
             Plan trade
           </button>

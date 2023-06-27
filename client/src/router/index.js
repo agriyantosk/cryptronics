@@ -4,6 +4,8 @@ import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 import HomeView from '../views/HomeView.vue'
 import CalculatorView from '../views/CalculatorView.vue'
+import PlannerView from '../views/PlannerView.vue'
+import JournalView from '../views/JournalView.vue'
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: '/calculator',
     name: 'calculator',
     component: CalculatorView
+  },
+  {
+    path: '/planner',
+    name: 'planner',
+    component: PlannerView
+  },
+  {
+    path: '/journal',
+    name: 'journal',
+    component: JournalView
   }
 ]
 

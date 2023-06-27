@@ -15,7 +15,6 @@ class PlannerController {
 
     static async add(req, res, next) {
         try {
-            console.log(req.body, ">>>>")
             const { cryptoName, entryPrice, exitPrice, tradeWeight, ratio } =
                 req.body;
             const addPlan = await Planner.create({
@@ -29,7 +28,6 @@ class PlannerController {
             });
             res.status(201).json({ message: "Plan added successfully" });
         } catch (error) {
-            console.log(error);
             next(error);
         }
     }
@@ -54,12 +52,15 @@ class PlannerController {
                 }
             );
             res.status(201).json({ message: "Plan edited successfully" });
-        } catch (error) {}
+        } catch (error) {
+            next(error)
+        }
     }
 
     static async delete(req, res, next) {
         try {
             const { id } = req.body;
+            console.log(id, ">>>")
             const deletePlan = await Planner.destroy({
                 where: {
                     id,
@@ -88,6 +89,7 @@ class PlannerController {
                         },
                     }
                 );
+                res.status(200).json({message: "Congrats! You've executed your plan"})
             }
         } catch (error) {
             next(error);

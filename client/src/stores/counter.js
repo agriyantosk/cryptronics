@@ -10,7 +10,8 @@ export const useMainStore = defineStore('main', {
     lastName: '',
     cryptoDatas: '',
     globalStats: '',
-    plans: ''
+    plans: '',
+    journals: ''
   }),
   actions: {
     async login(form) {
@@ -185,10 +186,90 @@ export const useMainStore = defineStore('main', {
     },
 
     async executePlan(id) {
+      Swal.fire({
+        title: 'Do you want to directly execute your trade?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `Customize`
+      }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          try {
+            const response = await axios({
+              method: 'PATCH',
+              url: `${this.baseUrl}/planner/execute`,
+              data: { id },
+              headers: {
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: `${response.data.message}`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+            const addJournal = await axios({
+              method: 'POST',
+              url: `${this.baseUrl}/journal/add`,
+              data: response.data.findPlan,
+              headers: {
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.router.push('/journal')
+          } catch (error) {
+            console.log(error)
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${error.response.data.message}`
+            })
+          }
+        } else if (result.isDenied) {
+          // nanti push ke add journal
+        }
+      })
+    },
+
+    async addJournal(data) {
       try {
         const response = await axios({
-          method: 'PATCH',
-          url: `${this.baseUrl}/planner/execute`,
+          method: 'POST',
+          url: `${this.baseUrl}/journal/add`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.router.push('/journal')
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async fetchJournals() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/journal/fetch`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.journals = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async deleteJournal(id) {
+      try {
+        const response = await axios({
+          method: 'DELETE',
+          url: `${this.baseUrl}/journal/delete`,
           data: { id },
           headers: {
             access_token: localStorage.getItem('access_token')
@@ -201,7 +282,7 @@ export const useMainStore = defineStore('main', {
           showConfirmButton: false,
           timer: 1500
         })
-        await this.fetchPlans()
+        this.fetchJournals()
       } catch (error) {
         console.log(error)
         Swal.fire({

@@ -15,15 +15,28 @@ class JournalController {
 
     static async add(req, res, next) {
         try {
-            const {
+            let result;
+            const { cryptoName, entryPrice, exitPrice, tradeWeight, ratio } =
+                req.body;
+            const profitOrLoss =
+                exitPrice * tradeWeight - entryPrice * tradeWeight;
+            if (profitOrLoss > 0) {
+                result = "PROFIT";
+            } else {
+                result = "LOSS";
+            }
+            const percentage = (exitPrice - entryPrice) / entryPrice;
+            console.log(
                 cryptoName,
                 entryPrice,
                 exitPrice,
                 tradeWeight,
                 ratio,
                 profitOrLoss,
+                percentage,
                 result,
-            } = req.body;
+                ">>>>"
+            );
             const addJournal = await Journal.create({
                 cryptoName,
                 entryPrice,
@@ -31,6 +44,7 @@ class JournalController {
                 tradeWeight,
                 ratio,
                 profitOrLoss,
+                percentage,
                 result,
                 UserId: req.user.id,
             });

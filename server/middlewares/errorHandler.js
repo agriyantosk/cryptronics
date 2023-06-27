@@ -14,6 +14,8 @@ const errorHandler = (error, req, res, next) => {
         res.status(401).json({
             message: "New password cannot be the same as your current password",
         });
+    } else if (error.name === "You already executed this plan") {
+        res.status(401).json({ message: "You already executed this plan" });
     } else {
         res.status(500).json({ message: "Internal server error" });
     }

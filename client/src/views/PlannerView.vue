@@ -26,6 +26,12 @@
 import LoggedNavbar from '../components/LoggedNavbar.vue'
 import PlannerTable from '../components/PlannerTable.vue'
 import { RouterLink } from 'vue-router'
+import { initFlowbite } from 'flowbite'
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    initFlowbite();
+})
 </script>
 
 <style lang="scss" scoped></style>

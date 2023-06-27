@@ -79,6 +79,12 @@ const switcher = (num) => {
 onBeforeMount(() => {
   mainStore.fetchCryptoData()
 })
+
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    initFlowbite();
+})
 </script>
 
 <style lang="scss" scoped></style>

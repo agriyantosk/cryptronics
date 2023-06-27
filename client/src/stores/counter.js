@@ -11,7 +11,8 @@ export const useMainStore = defineStore('main', {
     cryptoDatas: '',
     globalStats: '',
     plans: '',
-    journals: ''
+    journals: '',
+    executeJournalInput: ''
   }),
   actions: {
     async login(form) {
@@ -229,7 +230,15 @@ export const useMainStore = defineStore('main', {
             })
           }
         } else if (result.isDenied) {
-          // nanti push ke add journal
+          const response = await axios({
+            method: 'GET',
+            url: `${this.baseUrl}/planner/fetch/${id}`,
+            headers: {
+              access_token: localStorage.getItem('access_token')
+            }
+          })
+          this.executeJournalInput = response.data
+          this.router.push('/journal-add')
         }
       })
     },

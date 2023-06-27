@@ -60,9 +60,14 @@
               })
             }}
           </td>
-          <td class="px-6 py-4 text-center">
+          <td
+            :class="
+              data.result.includes('PROFIT') ? 'px-6 py-4 text-center font-bold text-green-500' : 'px-6 py-4 text-center font-bold text-red-400'
+            "
+          >
             {{ data.result }}
           </td>
+
           <td class="px-6 py-4 text-center">
             <div class="flex justify-evenly">
               <span @click.prevent="mainStore.deleteJournal(data.id)"

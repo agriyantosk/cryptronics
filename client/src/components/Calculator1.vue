@@ -1,5 +1,4 @@
 <template>
-  <!-- <pre>{{ mainStore.cryptoDatas.data.coins }}</pre> -->
   <div class="mx-[20%] my-10">
     <form @submit="handleSubmit">
       <label for="cryptoName" class="inline-block mb-2 font-semibold">Cryptocurrency</label>

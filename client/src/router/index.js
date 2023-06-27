@@ -6,6 +6,7 @@ import HomeView from '../views/HomeView.vue'
 import CalculatorView from '../views/CalculatorView.vue'
 import PlannerView from '../views/PlannerView.vue'
 import JournalView from '../views/JournalView.vue'
+import AddJournalView from '../views/AddJournalView.vue'
 
 const routes = [
   {
@@ -42,7 +43,12 @@ const routes = [
     path: '/journal',
     name: 'journal',
     component: JournalView
-  }
+  },
+  {
+    path: '/journal-add',
+    name: 'addJournal',
+    component: AddJournalView
+  },
 ]
 
 const router = createRouter({

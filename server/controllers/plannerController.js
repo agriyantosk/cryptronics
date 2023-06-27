@@ -13,6 +13,20 @@ class PlannerController {
         }
     }
 
+    static async fetchById(req, res, next) {
+        try {
+            const { id } = req.params;
+            const fetch = await Planner.findOne({
+                where: {
+                    id,
+                },
+            });
+            res.status(200).json(fetch)
+        } catch (error) {
+            next(error);
+        }
+    }
+
     static async add(req, res, next) {
         try {
             const { cryptoName, entryPrice, exitPrice, tradeWeight, ratio } =

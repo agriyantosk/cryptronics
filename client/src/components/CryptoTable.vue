@@ -40,7 +40,7 @@
               }}
             </td>
             <td class="px-6 py-4">
-              <div class="flex items-center">{{ data.change * 100 }}%</div>
+              <div class="flex items-center">{{ data.change }}%</div>
             </td>
             <td class="px-6 py-4">
               <div class="flex items-center">

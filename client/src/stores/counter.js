@@ -6,8 +6,11 @@ export const useMainStore = defineStore('main', {
   state: () => ({
     baseUrl: 'http://localhost:3000',
     access_token: '',
+    firstName: '',
+    lastName: '',
     cryptoDatas: '',
-    globalStats: ''
+    globalStats: '',
+    plans: ''
   }),
   actions: {
     async login(form) {
@@ -18,9 +21,12 @@ export const useMainStore = defineStore('main', {
           data: form
         })
         this.access_token = response.data.access_token
+        this.firstName = response.data.firstName
+        this.lastName = response.data.lastName
         localStorage.access_token = this.access_token
-        localStorage.firstName = this.firstName
-        localStorage.lastName = this.lastName
+        localStorage.firstName = response.data.firstName
+        localStorage.lastName = response.data.lastName
+        this.router.push('/home')
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -124,7 +130,7 @@ export const useMainStore = defineStore('main', {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.push('/home')
+        this.router.push('/planner')
       } catch (error) {
         console.log(error)
         Swal.fire({
@@ -132,6 +138,86 @@ export const useMainStore = defineStore('main', {
           title: 'Oops...',
           text: `${error.response.data.message}`
         })
+      }
+    },
+
+    async fetchPlans() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/planner/fetch`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.plans = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async deletePlans(id) {
+      try {
+        const response = await axios({
+          method: 'DELETE',
+          url: `${this.baseUrl}/planner/delete`,
+          data: { id },
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        await this.fetchPlans()
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async executePlan(id) {
+      try {
+        const response = await axios({
+          method: 'PATCH',
+          url: `${this.baseUrl}/planner/execute`,
+          data: { id },
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        await this.fetchPlans()
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async logout() {
+      try {
+        localStorage.clear()
+        this.router.push('/')
+      } catch (error) {
+        console.log(error)
       }
     }
   }

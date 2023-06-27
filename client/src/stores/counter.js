@@ -6,8 +6,8 @@ export const useMainStore = defineStore('main', {
   state: () => ({
     baseUrl: 'http://localhost:3000',
     access_token: '',
-    firstName: '',
-    lastname: ''
+    cryptoDatas: '',
+    globalStats: ''
   }),
   actions: {
     async login(form) {
@@ -17,11 +17,10 @@ export const useMainStore = defineStore('main', {
           url: `${this.baseUrl}/user/login`,
           data: form
         })
-        message = response.data.message
         this.access_token = response.data.access_token
-        this.firstName = response.data.firstName
-        this.lastname = response.data.lastName
         localStorage.access_token = this.access_token
+        localStorage.firstName = this.firstName
+        localStorage.lastName = this.lastName
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -34,7 +33,7 @@ export const useMainStore = defineStore('main', {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: `${error.response.data.message}`
+          text: `${error?.response?.data?.message}`
         })
       }
     },
@@ -61,6 +60,50 @@ export const useMainStore = defineStore('main', {
           title: 'Oops...',
           text: `${error.response.data.message}`
         })
+      }
+    },
+
+    async fetchCryptoData() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: 'https://coinranking1.p.rapidapi.com/coins',
+          params: {
+            referenceCurrencyUuid: 'yhjMzLPhuIDl',
+            timePeriod: '24h',
+            'tiers[0]': '1',
+            orderBy: 'marketCap',
+            orderDirection: 'desc',
+            limit: '50',
+            offset: '0'
+          },
+          headers: {
+            'X-RapidAPI-Key': '33a26c0319msh7b93f6ebe78b83fp18209djsnb945895de07c',
+            'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+          }
+        })
+        this.cryptoDatas = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async fetchGlobalStats() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: 'https://coinranking1.p.rapidapi.com/stats',
+          params: {
+            referenceCurrencyUuid: 'yhjMzLPhuIDl'
+          },
+          headers: {
+            'X-RapidAPI-Key': '33a26c0319msh7b93f6ebe78b83fp18209djsnb945895de07c',
+            'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+          }
+        })
+        this.globalStats = response.data
+      } catch (error) {
+        console.log(error)
       }
     }
   }

@@ -12,6 +12,7 @@
             <th scope="col" class="px-6 py-3">Change</th>
             <th scope="col" class="px-6 py-3">Market Cap</th>
             <th scope="col" class="px-6 py-3">Volume(24h)</th>
+            <th scope="col" class="px-6 py-3 text-center">Add to Watchlist</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +62,22 @@
                   })
                 }}
               </div>
+            </td>
+            <td class="px-6 py-4 flex justify-center mb-4">
+              <button
+                type="button"
+                @click.prevent="
+                  mainStore.addCoinWatchlist({
+                    cryptoName: data.symbol,
+                    symbol: data.name,
+                    iconUrl: data.iconUrl,
+                    coinrankingUrl: data.coinrankingUrl
+                  })
+                "
+                class="text-white bg-green-500 hover:bg-green-400 font-medium rounded-lg text-sm px-3 py-2"
+              >
+                +
+              </button>
             </td>
           </tr>
         </tbody>

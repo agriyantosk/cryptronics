@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/fetch", CoinWatchlistController.fetch);
 router.post("/add", CoinWatchlistController.add);
-router.delete("/delete", CoinWatchlistController.delete);
+router.delete("/delete/:id", CoinWatchlistController.delete);
 
 module.exports = router;

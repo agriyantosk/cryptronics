@@ -6,8 +6,7 @@ export const useMainStore = defineStore('main', {
   state: () => ({
     baseUrl: 'http://localhost:3000',
     access_token: '',
-    firstName: '',
-    lastName: '',
+    userInfo: '',
     cryptoDatas: '',
     globalStats: '',
     plans: '',
@@ -19,17 +18,16 @@ export const useMainStore = defineStore('main', {
   actions: {
     async login(form) {
       try {
+        console.log(form)
         const response = await axios({
           method: 'POST',
           url: `${this.baseUrl}/user/login`,
           data: form
         })
         this.access_token = response.data.access_token
-        this.firstName = response.data.firstName
-        this.lastName = response.data.lastName
+        this.userInfo = response.data.userInfo
         localStorage.access_token = this.access_token
-        localStorage.firstName = response.data.firstName
-        localStorage.lastName = response.data.lastName
+        localStorage.userInfo = JSON.stringify(this.userInfo)
         this.router.push('/home')
         Swal.fire({
           position: 'center',

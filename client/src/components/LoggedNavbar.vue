@@ -15,7 +15,7 @@
           </a>
         </RouterLink>
         <div class="flex items-center md:order-2">
-          <p class="text-white mr-4">Hi, {{ firstName }}</p>
+          <p class="text-white mr-4">Hi, {{ userData.firstName }}</p>
           <button
             type="button"
             class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -38,14 +38,16 @@
           >
             <div class="px-4 py-3">
               <span class="block text-sm text-white truncate dark:text-gray-400"
-                >{{ firstName }} {{ lastName }}</span
+                >{{ userData.firstName }} {{ userData.lastName }}</span
               >
             </div>
             <ul class="py-2" aria-labelledby="user-menu-button">
               <li>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
-                  >Profile</a
-                >
+                <RouterLink to="/profile">
+                  <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-green-400"
+                    >Profile</a
+                  >
+                </RouterLink>
               </li>
               <li>
                 <RouterLink to="/watchlist">
@@ -125,7 +127,7 @@
                 >About</a
               >
             </li>
-            <li>
+            <!-- <li>
               <RouterLink to="/calculator">
                 <a
                   href="#"
@@ -133,14 +135,20 @@
                   >Calculator</a
                 >
               </RouterLink>
-            </li>
+            </li> -->
             <li>
               <RouterLink to="/launch">
-                <a
-                  href="#"
-                  class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-400 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  >Coin Launch</a
-                >
+                <div class="flex items-center">
+                  <a
+                    href="#"
+                    class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-400 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >Coin Launch</a
+                  >
+                  <span
+                    class="inline-flex items-center justify-center px-3 text-sm font-medium text-white bg-green-400 rounded-full dark:bg-gray-700 dark:text-gray-300"
+                    >New</span
+                  >
+                </div>
               </RouterLink>
             </li>
           </ul>
@@ -154,8 +162,7 @@
 import { RouterLink } from 'vue-router'
 import { useMainStore } from '../stores/counter'
 const mainStore = useMainStore()
-const firstName = localStorage.getItem('firstName')
-const lastName = localStorage.getItem('lastName')
+const userData = JSON.parse(localStorage.getItem('userInfo'))
 </script>
 
 <style lang="scss" scoped></style>

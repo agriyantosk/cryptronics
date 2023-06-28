@@ -9,6 +9,7 @@ import JournalView from '../views/JournalView.vue'
 import AddJournalView from '../views/AddJournalView.vue'
 import WatchlistView from '../views/WatchlistView.vue'
 import CoinLaunchView from '../views/CoinLaunchView.vue'
+import ProfilePageView from '../views/ProfilePageView.vue'
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     path: '/launch',
     name: 'launch',
     component: CoinLaunchView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfilePageView
   }
 ]
 

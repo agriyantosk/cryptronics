@@ -11,7 +11,10 @@ export const useMainStore = defineStore('main', {
     cryptoDatas: '',
     globalStats: '',
     plans: '',
-    journals: ''
+    journals: '',
+    coinWatchlists: '',
+    coinLaunches: '',
+    launchWatchlists: ''
   }),
   actions: {
     async login(form) {
@@ -338,6 +341,170 @@ export const useMainStore = defineStore('main', {
         this.router.push('/')
       } catch (error) {
         console.log(error)
+      }
+    },
+
+    async addCoinWatchlist(data) {
+      try {
+        const response = await axios({
+          method: 'POST',
+          url: `${this.baseUrl}/coin/add`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async fetchCoinWatchlist() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/coin/fetch`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.coinWatchlists = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async deleteCoinWatchlist(id) {
+      try {
+        console.log(id)
+        const response = await axios({
+          method: 'DELETE',
+          url: `${this.baseUrl}/coin/delete/${id}`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.fetchCoinWatchlist()
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async fetchCoinLaunch() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/launch/fetch-launches`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.coinLaunches = response.data.body
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async addLaunchWatchlist(data) {
+      try {
+        const response = await axios({
+          method: 'POST',
+          url: `${this.baseUrl}/launch/add`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async fetchLaunchWatchlist() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/launch/fetch`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.launchWatchlists = response.data
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
+    },
+
+    async deleteLaunchWatchlist(id) {
+      try {
+        const response = await axios({
+          method: 'DELETE',
+          url: `${this.baseUrl}/launch/delete/${id}`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.fetchLaunchWatchlist()
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
       }
     }
   }

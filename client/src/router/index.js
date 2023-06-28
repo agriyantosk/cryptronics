@@ -7,6 +7,8 @@ import CalculatorView from '../views/CalculatorView.vue'
 import PlannerView from '../views/PlannerView.vue'
 import JournalView from '../views/JournalView.vue'
 import AddJournalView from '../views/AddJournalView.vue'
+import WatchlistView from '../views/WatchlistView.vue'
+import CoinLaunchView from '../views/CoinLaunchView.vue'
 
 const routes = [
   {
@@ -49,6 +51,16 @@ const routes = [
     name: 'addJournal',
     component: AddJournalView
   },
+  {
+    path: '/watchlist',
+    name: 'watchlist',
+    component: WatchlistView
+  },
+  {
+    path: '/launch',
+    name: 'launch',
+    component: CoinLaunchView
+  }
 ]
 
 const router = createRouter({

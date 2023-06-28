@@ -54,23 +54,7 @@ import Calculator2 from '../components/Calculator2.vue'
 import Calculator3 from '../components/Calculator3.vue'
 
 const mainStore = useMainStore()
-const form3 = {
-  cryptoName: '',
-  investment: '',
-  entryPrice: '',
-  exitPrice: '',
-  stopLoss: '',
-  percentage: '',
-  ratio: '',
-  targetProfit: ''
-}
 let calcNum = ref(1)
-
-const calc3 = () => {
-  form3.exitPrice = (form3.investment + form3.targetProfit) / (form3.investment / form3.entryPrice)
-  form3.percentage = (form3.exitPrice - form3.entryPrice) / form3.entryPrice
-  form3.ratio = (form3.exitPrice - form3.entryPrice) / (form3.entryPrice - form3.stopLoss)
-}
 
 const switcher = (num) => {
   calcNum.value = num
@@ -80,10 +64,10 @@ onBeforeMount(() => {
   mainStore.fetchCryptoData()
 })
 
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 onMounted(() => {
-    initFlowbite();
+  initFlowbite()
 })
 </script>
 

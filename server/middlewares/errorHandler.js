@@ -16,6 +16,8 @@ const errorHandler = (error, req, res, next) => {
         });
     } else if (error.name === "You already executed this plan") {
         res.status(401).json({ message: "You already executed this plan" });
+    } else if (error.name === "You already added to the watchlist") {
+        res.status(401).json({ message: "You already added to the watchlist" });
     } else {
         res.status(500).json({ message: "Internal server error" });
     }

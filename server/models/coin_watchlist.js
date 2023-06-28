@@ -28,6 +28,42 @@ module.exports = (sequelize, DataTypes) => {
                     },
                 },
             },
+            symbol: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "Symbol is required",
+                    },
+                    notEmpty: {
+                        messge: "Symbol is required",
+                    },
+                },
+            },
+            iconUrl: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "iconUrl is required",
+                    },
+                    notEmpty: {
+                        messge: "iconUrl is required",
+                    },
+                },
+            },
+            coinrankingUrl: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        message: "coinrankingUrl is required",
+                    },
+                    notEmpty: {
+                        messge: "coinrankingUrl is required",
+                    },
+                },
+            },
             UserId: DataTypes.INTEGER,
         },
         {

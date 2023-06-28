@@ -17,14 +17,26 @@ class CoinWatchlistController {
 
     static async add(req, res, next) {
         try {
-            const { cryptoName } = req.body;
-            const addCoinWatchlist = await Coin_Watchlist.create({
-                cryptoName,
-                UserId: req.user.id,
+            const { cryptoName, symbol, iconUrl, coinrankingUrl } = req.body;
+            const checkCoinWatchlist = await Coin_Watchlist.findOne({
+                where: {
+                    cryptoName,
+                },
             });
-            res.status(201).json({
-                message: "Successfully added to your watchlist",
-            });
+            if (checkCoinWatchlist) {
+                throw { name: "You already added to the watchlist" };
+            } else {
+                const addCoinWatchlist = await Coin_Watchlist.create({
+                    cryptoName,
+                    symbol,
+                    iconUrl,
+                    coinrankingUrl,
+                    UserId: req.user.id,
+                });
+                res.status(201).json({
+                    message: "Successfully added to your watchlist",
+                });
+            }
         } catch (error) {
             next(error);
         }
@@ -32,7 +44,7 @@ class CoinWatchlistController {
 
     static async delete(req, res, next) {
         try {
-            const { id } = req.body;
+            const { id } = req.params;
             const findWatchlist = await Coin_Watchlist.findOne({
                 where: {
                     id,

@@ -91,7 +91,7 @@ class PlannerController {
             const { id } = req.body;
             const findPlan = await Planner.findByPk(id);
             if (!findPlan) {
-                throw { name: "Data not found" };
+                throw { name: "findPlan not found" };
             } else {
                 if (findPlan.status === "Executed") {
                     throw { name: "You already executed this plan" };

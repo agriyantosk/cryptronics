@@ -11,8 +11,7 @@ export const useMainStore = defineStore('main', {
     cryptoDatas: '',
     globalStats: '',
     plans: '',
-    journals: '',
-    executeJournalInput: ''
+    journals: ''
   }),
   actions: {
     async login(form) {
@@ -205,6 +204,7 @@ export const useMainStore = defineStore('main', {
                 access_token: localStorage.getItem('access_token')
               }
             })
+            const data = response.data.findPlan
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -215,7 +215,7 @@ export const useMainStore = defineStore('main', {
             const addJournal = await axios({
               method: 'POST',
               url: `${this.baseUrl}/journal/add`,
-              data: response.data.findPlan,
+              data: { data: data },
               headers: {
                 access_token: localStorage.getItem('access_token')
               }
@@ -237,18 +237,48 @@ export const useMainStore = defineStore('main', {
               access_token: localStorage.getItem('access_token')
             }
           })
-          this.executeJournalInput = response.data
+          localStorage.executePlan = JSON.stringify(response.data)
           this.router.push('/journal-add')
         }
       })
     },
 
-    async addJournal(data) {
+    async executeCustomPlan(data, plannerId) {
       try {
+        localStorage.removeItem('executePlan')
         const response = await axios({
           method: 'POST',
           url: `${this.baseUrl}/journal/add`,
-          data: data,
+          data: { data, plannerId },
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.push('/journal')
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response}`
+        })
+      }
+    },
+
+    async addJournal(data) {
+      try {
+        const plannerId = this.executeJournalInput.id
+        const response = await axios({
+          method: 'POST',
+          url: `${this.baseUrl}/journal/add`,
+          data: { data, plannerId },
           headers: {
             access_token: localStorage.getItem('access_token')
           }

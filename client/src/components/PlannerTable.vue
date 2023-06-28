@@ -53,11 +53,14 @@
                   Delete
                 </button></span
               >
-              <span @click.prevent="mainStore.executePlan(data.id)"
-                ><button class="bg-green-500 hover:bg-green-400 rounded-lg px-4 py-2">
+              <span @click.prevent="mainStore.executePlan(data.id)">
+                <button
+                  :disabled="data.status === 'Executed'"
+                  class="bg-green-500 hover:bg-green-400 rounded-lg px-4 py-2"
+                >
                   Execute
-                </button></span
-              >
+                </button>
+              </span>
             </div>
           </td>
         </tr>

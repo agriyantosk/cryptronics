@@ -62,7 +62,9 @@
           </td>
           <td
             :class="
-              data.result.includes('PROFIT') ? 'px-6 py-4 text-center font-bold text-green-500' : 'px-6 py-4 text-center font-bold text-red-400'
+              data.result.includes('PROFIT')
+                ? 'px-6 py-4 text-center font-bold text-green-500'
+                : 'px-6 py-4 text-center font-bold text-red-400'
             "
           >
             {{ data.result }}
@@ -90,7 +92,6 @@ const mainStore = useMainStore()
 
 onBeforeMount(() => {
   mainStore.fetchJournals()
-  console.log(mainStore.journals)
 })
 </script>
 

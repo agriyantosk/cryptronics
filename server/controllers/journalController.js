@@ -1,4 +1,4 @@
-const { Journal } = require("../models");
+const { Journal, Planner } = require("../models");
 
 class JournalController {
     static async fetch(req, res, next) {
@@ -17,7 +17,8 @@ class JournalController {
         try {
             let result;
             const { cryptoName, entryPrice, exitPrice, tradeWeight, ratio } =
-                req.body;
+                req.body.data;
+            const { plannerId } = req.body;
             const profitOrLoss =
                 exitPrice * tradeWeight - entryPrice * tradeWeight;
             if (profitOrLoss > 0) {
@@ -26,17 +27,6 @@ class JournalController {
                 result = "LOSS";
             }
             const percentage = (exitPrice - entryPrice) / entryPrice;
-            console.log(
-                cryptoName,
-                entryPrice,
-                exitPrice,
-                tradeWeight,
-                ratio,
-                profitOrLoss,
-                percentage,
-                result,
-                ">>>>"
-            );
             const addJournal = await Journal.create({
                 cryptoName,
                 entryPrice,
@@ -48,8 +38,24 @@ class JournalController {
                 result,
                 UserId: req.user.id,
             });
+            const checkPlanner = await Planner.findByPk(plannerId);
+            if (checkPlanner) {
+                await Planner.update(
+                    {
+                        cryptoName,
+                        entryPrice,
+                        exitPrice,
+                        tradeWeight,
+                        ratio,
+                        status: "Executed",
+                        UserId: req.user.id,
+                    },
+                    { where: { id: plannerId } }
+                );
+            }
             res.status(201).json({ message: "Journal added successfully" });
         } catch (error) {
+            console.log(error);
             next(error);
         }
     }

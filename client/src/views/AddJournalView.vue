@@ -18,10 +18,6 @@ import JournalForm from '../components/JournalForm.vue'
 
 const mainStore = useMainStore()
 
-onBeforeMount(() => {
-  console.log(mainStore.executeJournalInput)
-})
-
 import { onMounted } from 'vue'
 
 onMounted(() => {

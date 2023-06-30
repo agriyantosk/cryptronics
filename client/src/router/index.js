@@ -3,6 +3,7 @@ import LandingView from '../views/LandingView.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
 import CalculatorView from '../views/CalculatorView.vue'
 import PlannerView from '../views/PlannerView.vue'
 import JournalView from '../views/JournalView.vue'
@@ -13,6 +14,7 @@ import ProfilePageView from '../views/ProfilePageView.vue'
 import EditProfileView from '../views/EditProfileView.vue'
 import ChangePasswordView from '../views/ChangePasswordView.vue'
 import NewsView from '../views/NewsView.vue'
+import TradingDashboardView from '../views/TradingDashboardView.vue'
 
 const routes = [
   {
@@ -34,6 +36,11 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
   },
   {
     path: '/calculator',
@@ -84,6 +91,11 @@ const routes = [
     path: '/profile/change-password',
     name: 'changePassword',
     component: ChangePasswordView
+  },
+  {
+    path: '/profile/dashboard',
+    name: 'dashboard',
+    component: TradingDashboardView
   },
 ]
 

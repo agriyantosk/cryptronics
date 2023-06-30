@@ -1,6 +1,6 @@
 <template>
     <div>
-
+<h1>INI ADALAH BALANCE</h1>
     </div>
 </template>
 

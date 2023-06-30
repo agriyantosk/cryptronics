@@ -5,7 +5,6 @@
         <label for="cryptoName" class="inline-block mb-2 font-semibold">Cryptocurrency</label>
         <select
           v-model="form.cryptoName"
-          :placeholder="data.cryptoName"
           class="flex-grow w-full h-12 px-4 mb-4 transition duration-200 text-gray-900 bg-white border border-gray-400 rounded shadow-sm appearance-none focus:outline-none focus:shadow-outline focus:border-indigo-500"
         >
           <option v-for="data in mainStore?.cryptoDatas?.data?.coins">
@@ -16,7 +15,6 @@
         ><input
           id="investment"
           type="number"
-          :placeholder="data.investment"
           v-model="form.investment"
           class="flex-grow w-full h-12 px-4 mb-4 transition duration-200 text-gray-900 bg-white border border-gray-400 rounded shadow-sm appearance-none focus:outline-none focus:shadow-outline focus:border-indigo-500"
           style="appearance: none"
@@ -26,7 +24,6 @@
         ><input
           id="entryPrice"
           type="number"
-          :placeholder="data.entryPrice"
           v-model="form.entryPrice"
           class="flex-grow w-full h-12 px-4 mb-4 transition duration-200 text-gray-900 bg-white border border-gray-400 rounded shadow-sm appearance-none focus:outline-none focus:shadow-outline focus:border-indigo-500"
           style="appearance: none"
@@ -37,7 +34,6 @@
           id="exitPrice"
           type="number"
           v-model="form.exitPrice"
-          :placeholder="data.exitPrice"
           class="flex-grow w-full h-12 px-4 mb-4 transition duration-200 text-gray-900 bg-white border border-gray-400 rounded shadow-sm appearance-none focus:outline-none focus:shadow-outline focus:border-indigo-500"
           style="appearance: none"
           required
@@ -47,7 +43,6 @@
           id="stopLoss"
           type="number"
           v-model="form.stopLoss"
-          :placeholder="data.stopLoss"
           class="flex-grow w-full h-12 px-4 mb-4 transition duration-200 text-gray-900 bg-white border border-gray-400 rounded shadow-sm appearance-none focus:outline-none focus:shadow-outline focus:border-indigo-500"
           style="appearance: none"
           required

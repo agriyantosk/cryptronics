@@ -504,6 +504,34 @@ export const useMainStore = defineStore('main', {
           text: `${error.response.data.message}`
         })
       }
+    },
+
+    async changeProfile(data) {
+      try {
+        const response = await axios({
+          method: 'PATCH',
+          url: `${this.baseUrl}/user/change-profile/`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        await this.logout()
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
+      }
     }
   }
 })

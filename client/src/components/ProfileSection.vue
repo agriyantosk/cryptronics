@@ -21,7 +21,7 @@
             </div>
           </div>
           <div>
-            <RouterLink to="">
+            <RouterLink to="/profile/edit">
               <a
                 href="#"
                 class="flex items-center p-2 text-green-500 underline rounded-lg dark:text-white hover:text-green-400 dark:hover:bg-gray-700"

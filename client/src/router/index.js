@@ -10,6 +10,7 @@ import AddJournalView from '../views/AddJournalView.vue'
 import WatchlistView from '../views/WatchlistView.vue'
 import CoinLaunchView from '../views/CoinLaunchView.vue'
 import ProfilePageView from '../views/ProfilePageView.vue'
+import EditProfileView from '../views/EditProfileView.vue'
 
 const routes = [
   {
@@ -48,11 +49,6 @@ const routes = [
     component: JournalView
   },
   {
-    path: '/journal-add',
-    name: 'addJournal',
-    component: AddJournalView
-  },
-  {
     path: '/watchlist',
     name: 'watchlist',
     component: WatchlistView
@@ -66,6 +62,16 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfilePageView
+  },
+  {
+    path: '/journal/add',
+    name: 'addJournal',
+    component: AddJournalView
+  },
+  {
+    path: '/profile/edit',
+    name: 'editProfile',
+    component: EditProfileView
   }
 ]
 

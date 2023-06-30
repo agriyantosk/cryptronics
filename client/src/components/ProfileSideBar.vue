@@ -21,11 +21,19 @@
           <li>
             <a
               href="#"
-              class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700"
+              :class="
+                route.path === '/profile'
+                  ? 'flex items-center p-2 text-green-500 bg-white rounded-lg dark:text-white dark:hover:bg-gray-700'
+                  : 'flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700'
+              "
             >
               <svg
                 aria-hidden="true"
-                class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                :class="
+                  route.path === '/profile'
+                    ? 'flex-shrink-0 w-6 h-6 text-green-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                    : 'flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
+                "
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +44,38 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+              <span class="flex-1 ml-3 whitespace-nowrap">My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700"
+            >
+              <svg
+                enable-background="new 0 0 32 32"
+                class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                height="32px"
+                id="Layer_1"
+                version="1.1"
+                viewBox="0 0 32 32"
+                width="32px"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g id="lock">
+                  <path
+                    d="M25,13V9c0-4.971-4.029-9-9-9c-4.971,0-9,4.029-9,9v4c-1.657,0-3,1.343-3,3v3v1v2v1c0,4.971,4.029,9,9,9h6   c4.971,0,9-4.029,9-9v-1v-2v-1v-3C28,14.342,26.656,13,25,13z M9,9c0-3.866,3.134-7,7-7c3.866,0,7,3.134,7,7v4h-2V9.002   c0-2.762-2.238-5-5-5c-2.762,0-5,2.238-5,5V13H9V9z M20,9v0.003V13h-8V9.002V9c0-2.209,1.791-4,4-4C18.209,5,20,6.791,20,9z M26,19   v1v2v1c0,3.859-3.141,7-7,7h-6c-3.859,0-7-3.141-7-7v-1v-2v-1v-3c0-0.552,0.448-1,1-1c0.667,0,1.333,0,2,0h14c0.666,0,1.332,0,2,0   c0.551,0,1,0.448,1,1V19z"
+                    fill="#333333"
+                  />
+                  <path
+                    d="M16,19c-1.104,0-2,0.895-2,2c0,0.607,0.333,1.76,0.667,2.672c0.272,0.742,0.614,1.326,1.333,1.326   c0.782,0,1.061-0.578,1.334-1.316C17.672,22.768,18,21.609,18,21C18,19.895,17.104,19,16,19z"
+                    fill="#333333"
+                  />
+                </g>
+              </svg>
+              <span class="flex-1 ml-3 whitespace-nowrap">Change Password</span>
             </a>
           </li>
           <li>
@@ -103,6 +142,23 @@
               <span class="ml-3">Help</span>
             </a>
           </li>
+          <li>
+            <a
+              href="#"
+              class="flex items-center p-2 text-red-500 transition duration-75 rounded-lg hover:bg-green-500 dark:text-white group"
+            >
+              <svg
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-shrink-0 w-6 h-6 text-red-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+              >
+                <path
+                  d="M32 464C32 490.5 53.5 512 80 512h288c26.5 0 48-21.5 48-48V128H32V464zM304 208C304 199.1 311.1 192 320 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM208 208C208 199.1 215.1 192 224 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM112 208C112 199.1 119.1 192 128 192s16 7.125 16 16v224C144 440.9 136.9 448 128 448s-16-7.125-16-16V208zM432 32H320l-11.58-23.16c-2.709-5.42-8.25-8.844-14.31-8.844H153.9c-6.061 0-11.6 3.424-14.31 8.844L128 32H16c-8.836 0-16 7.162-16 16V80c0 8.836 7.164 16 16 16h416c8.838 0 16-7.164 16-16V48C448 39.16 440.8 32 432 32z"
+                />
+              </svg>
+              <span class="ml-3">Delete Account</span>
+            </a>
+          </li>
         </ul>
       </div>
     </aside>
@@ -110,7 +166,13 @@
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { onBeforeMount } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+const route = useRoute()
+
+// onBeforeMount(() => {
+//     console.log(route.path)
+// })
 </script>
 
 <style lang="scss" scoped></style>

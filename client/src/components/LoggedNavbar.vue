@@ -114,24 +114,38 @@
               <RouterLink to="/home">
                 <a
                   href="#"
-                  :class="route.path === '/home' ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500' : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'"
+                  :class="
+                    route.path === '/home'
+                      ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                      : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                  "
                   aria-current="page"
                   >Home</a
                 >
               </RouterLink>
             </li>
             <li>
-              <a
-                href="#"
-                :class="route.path === '/about' ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500' : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'"
-                >About</a
-              >
+              <RouterLink to="/about">
+                <a
+                  href="#"
+                  :class="
+                    route.path === '/about'
+                      ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                      : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                  "
+                  >About</a
+                >
+              </RouterLink>
             </li>
             <li>
               <RouterLink to="/news">
                 <a
                   href="#"
-                  :class="route.path === '/news' ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500' : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'"
+                  :class="
+                    route.path === '/news'
+                      ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                      : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                  "
                   >News</a
                 >
               </RouterLink>
@@ -141,7 +155,11 @@
                 <div class="flex items-center">
                   <a
                     href="#"
-                    :class="route.path === '/launch' ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500' : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'"
+                    :class="
+                      route.path === '/launch'
+                        ? 'block py-2 pl-3 pr-4 text-green-500 rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                        : 'block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:hover:text-green-400 md:p-0 md:dark:text-blue-500'
+                    "
                     >Coin Launch</a
                   >
                   <span
@@ -159,7 +177,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount } from 'vue';
+import { onBeforeMount } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useMainStore } from '../stores/counter'
 

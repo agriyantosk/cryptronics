@@ -74,15 +74,39 @@
                   <g id="lock">
                     <path
                       d="M25,13V9c0-4.971-4.029-9-9-9c-4.971,0-9,4.029-9,9v4c-1.657,0-3,1.343-3,3v3v1v2v1c0,4.971,4.029,9,9,9h6   c4.971,0,9-4.029,9-9v-1v-2v-1v-3C28,14.342,26.656,13,25,13z M9,9c0-3.866,3.134-7,7-7c3.866,0,7,3.134,7,7v4h-2V9.002   c0-2.762-2.238-5-5-5c-2.762,0-5,2.238-5,5V13H9V9z M20,9v0.003V13h-8V9.002V9c0-2.209,1.791-4,4-4C18.209,5,20,6.791,20,9z M26,19   v1v2v1c0,3.859-3.141,7-7,7h-6c-3.859,0-7-3.141-7-7v-1v-2v-1v-3c0-0.552,0.448-1,1-1c0.667,0,1.333,0,2,0h14c0.666,0,1.332,0,2,0   c0.551,0,1,0.448,1,1V19z"
-                      fill="#333333"
+                      :fill="route.path === '/profile/change-password' ? '#22C55E' : '#FFFFFF'"
                     />
                     <path
                       d="M16,19c-1.104,0-2,0.895-2,2c0,0.607,0.333,1.76,0.667,2.672c0.272,0.742,0.614,1.326,1.333,1.326   c0.782,0,1.061-0.578,1.334-1.316C17.672,22.768,18,21.609,18,21C18,19.895,17.104,19,16,19z"
-                      fill="#333333"
+                      :fill="route.path === '/profile/change-password' ? '#22C55E' : '#FFFFFF'"
                     />
                   </g>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Change Password</span>
+              </a>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/profile/dashboard">
+              <a
+                href="#"
+                :class="
+                  route.path === '/profile/dashboard'
+                    ? 'flex items-center p-2 text-green-500 bg-white rounded-lg dark:text-white dark:hover:bg-gray-700'
+                    : 'flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700'
+                "
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  :fill="route.path === '/profile/dashboard' ? '#22C55E' : '#FFFFFF'"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Trading Dashboard</span>
               </a>
             </RouterLink>
           </li>
@@ -92,16 +116,34 @@
               class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700"
             >
               <svg
-                aria-hidden="true"
-                class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+                height="21px"
+                version="1.1"
+                viewBox="0 0 20 21"
+                width="20px"
                 xmlns="http://www.w3.org/2000/svg"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
               >
-                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                <title />
+                <desc />
+                <defs />
+                <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                  <g
+                    fill="#FFFFFF"
+                    id="Core"
+                    opacity="0.9"
+                    transform="translate(-464.000000, -254.000000)"
+                  >
+                    <g id="history" transform="translate(464.000000, 254.500000)">
+                      <path
+                        d="M10.5,0 C7,0 3.9,1.9 2.3,4.8 L0,2.5 L0,9 L6.5,9 L3.7,6.2 C5,3.7 7.5,2 10.5,2 C14.6,2 18,5.4 18,9.5 C18,13.6 14.6,17 10.5,17 C7.2,17 4.5,14.9 3.4,12 L1.3,12 C2.4,16 6.1,19 10.5,19 C15.8,19 20,14.7 20,9.5 C20,4.3 15.7,0 10.5,0 L10.5,0 Z M9,5 L9,10.1 L13.7,12.9 L14.5,11.6 L10.5,9.2 L10.5,5 L9,5 L9,5 Z"
+                        id="Shape"
+                      />
+                    </g>
+                  </g>
+                </g>
               </svg>
-              <span class="flex-1 ml-3 whitespace-nowrap">Trading Dashboard</span>
+              <span class="flex-1 ml-3 whitespace-nowrap">Logs</span>
             </a>
           </li>
         </ul>

@@ -11,6 +11,7 @@ import WatchlistView from '../views/WatchlistView.vue'
 import CoinLaunchView from '../views/CoinLaunchView.vue'
 import ProfilePageView from '../views/ProfilePageView.vue'
 import EditProfileView from '../views/EditProfileView.vue'
+import ChangePasswordView from '../views/ChangePasswordView.vue'
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: '/profile/edit',
     name: 'editProfile',
     component: EditProfileView
+  },
+  {
+    path: '/profile/change-password',
+    name: 'changePassword',
+    component: ChangePasswordView
   }
 ]
 

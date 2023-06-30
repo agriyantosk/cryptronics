@@ -13,7 +13,8 @@ export const useMainStore = defineStore('main', {
     journals: '',
     coinWatchlists: '',
     coinLaunches: '',
-    launchWatchlists: ''
+    launchWatchlists: '',
+    newsDatas: ''
   }),
   actions: {
     async login(form) {
@@ -559,6 +560,18 @@ export const useMainStore = defineStore('main', {
           title: 'Oops...',
           text: `${error.response.data.message}`
         })
+      }
+    },
+
+    async fetchNews() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: 'https://newsdata.io/api/1/news?apikey=pub_21861e50fe3e8e27d167511c54400bf5ba419&country=au,us&q=crypto,finance,economics'
+        })
+        this.newsDatas = response.data.results
+      } catch (error) {
+        console.log(error)
       }
     }
   }

@@ -12,6 +12,7 @@ import CoinLaunchView from '../views/CoinLaunchView.vue'
 import ProfilePageView from '../views/ProfilePageView.vue'
 import EditProfileView from '../views/EditProfileView.vue'
 import ChangePasswordView from '../views/ChangePasswordView.vue'
+import NewsView from '../views/NewsView.vue'
 
 const routes = [
   {
@@ -65,6 +66,11 @@ const routes = [
     component: ProfilePageView
   },
   {
+    path: '/news',
+    name: 'news',
+    component: NewsView
+  },
+  {
     path: '/journal/add',
     name: 'addJournal',
     component: AddJournalView
@@ -78,7 +84,7 @@ const routes = [
     path: '/profile/change-password',
     name: 'changePassword',
     component: ChangePasswordView
-  }
+  },
 ]
 
 const router = createRouter({

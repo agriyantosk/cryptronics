@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>INI ADALAH TRADING DASHBOARD</h1>
     <ProfileSideBar />
     <TradingDashboard />
   </div>

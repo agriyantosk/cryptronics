@@ -21,15 +21,11 @@ module.exports = {
                 type: Sequelize.DECIMAL,
                 allowNull: false,
             },
-            roi: {
+            profitFreq: {
                 type: Sequelize.DECIMAL,
                 allowNull: false,
             },
-            win: {
-                type: Sequelize.DECIMAL,
-                allowNull: false,
-            },
-            loss: {
+            lossFreq: {
                 type: Sequelize.DECIMAL,
                 allowNull: false,
             },

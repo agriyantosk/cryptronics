@@ -89,7 +89,11 @@ const handleSubmit = async (event) => {
   event.preventDefault()
   try {
     await calculate()
-    await mainStore.executeCustomPlan(form, data.id)
+    if (!data) {
+      await mainStore.executeCustomPlan(form)
+    } else {
+      await mainStore.executeCustomPlan(form, data.id)
+    }
   } catch (error) {
     console.log(error)
   }

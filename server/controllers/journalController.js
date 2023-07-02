@@ -1,4 +1,4 @@
-const { Journal, Planner, Dashboard, User } = require("../models");
+const { History, Journal, Planner, Dashboard, User } = require("../models");
 const Sequelize = require("sequelize");
 
 class JournalController {
@@ -103,6 +103,12 @@ class JournalController {
                     },
                 }
             );
+            const addHistory = await History.create({
+                cryptoName,
+                amount: (entryPrice * tradeWeight),
+                tradeWeight,
+                UserId: req.user.id,
+            });
             res.status(201).json({ message: "Journal added successfully" });
         } catch (error) {
             console.log(error);

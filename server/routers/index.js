@@ -8,6 +8,8 @@ const journalRouter = require("./journal");
 const launchRouter = require("./launchWatchlist");
 const coinRouter = require("./coinWatchlist");
 const dashboardRouter = require("./dashboard");
+const historyRouter = require("./history");
+const balanceHistoryRouter = require("./balanceHistory");
 
 router.use("/user", userRouter);
 router.use(authentication);
@@ -16,6 +18,8 @@ router.use("/journal", journalRouter);
 router.use("/launch", launchRouter);
 router.use("/coin", coinRouter);
 router.use("/dashboard", dashboardRouter);
+router.use("/history", historyRouter);
+router.use("/balance", balanceHistoryRouter);
 router.use(errorHandler);
 
 module.exports = router;

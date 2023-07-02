@@ -7,13 +7,13 @@
     </h1>
     <div class="grid grid-cols-3 justify-items-center">
       <BalanceCard :balance="mainStore.dashboardDatas.balance" />
-      <TradeActivityCard :activity="mainStore.dashboardDatas.fetchDashboard.activity" />
-      <TotalProfitCard :profit="mainStore.dashboardDatas.fetchDashboard.profit" />
-      <TotalLossCard :loss="mainStore.dashboardDatas.fetchDashboard.loss" />
+      <TradeActivityCard :activity="mainStore.dashboardDatas.fetchDashboard?.activity" />
+      <TotalProfitCard :profit="mainStore.dashboardDatas.fetchDashboard?.profit" />
+      <TotalLossCard :loss="mainStore.dashboardDatas.fetchDashboard?.loss" />
       <ROICard />
       <RateCard
-        :profitFreq="mainStore.dashboardDatas.fetchDashboard.profitFreq"
-        :lossFreq="mainStore.dashboardDatas.fetchDashboard.lossFreq"
+        :profitFreq="mainStore.dashboardDatas.fetchDashboard?.profitFreq"
+        :lossFreq="mainStore.dashboardDatas.fetchDashboard?.lossFreq"
       />
     </div>
   </div>

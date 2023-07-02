@@ -1,6 +1,6 @@
 const { checkPassword, hashPassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
-const { User } = require("../models");
+const { User, Dashboard } = require("../models");
 
 class UserController {
     static async register(req, res, next) {
@@ -24,8 +24,18 @@ class UserController {
                 initialBalance,
                 isPaid: false,
             });
+            const createDashboard = await Dashboard.create({
+                activity: 0,
+                profit: 0,
+                loss: 0,
+                roi: 0,
+                profitFreq: 0,
+                lossFreq: 0,
+                UserId: register.id,
+            });
             res.status(201).json({ message: "Successfully Register!" });
         } catch (error) {
+            console.log(error)
             next(error);
         }
     }

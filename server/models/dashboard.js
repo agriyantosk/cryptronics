@@ -49,39 +49,27 @@ module.exports = (sequelize, DataTypes) => {
                     },
                 },
             },
-            roi: {
+            profitFreq: {
                 type: DataTypes.DECIMAL,
                 allowNull: false,
                 validate: {
                     notNull: {
-                        message: "ROI is required",
+                        message: "Profit Frequency is required",
                     },
                     notEmpty: {
-                        message: "ROI is required",
+                        message: "Profit Frequency is required",
                     },
                 },
             },
-            win: {
+            lossFreq: {
                 type: DataTypes.DECIMAL,
                 allowNull: false,
                 validate: {
                     notNull: {
-                        message: "Profit is required",
+                        message: "Loss Frequency is required",
                     },
                     notEmpty: {
-                        message: "Profit is required",
-                    },
-                },
-            },
-            loss: {
-                type: DataTypes.DECIMAL,
-                allowNull: false,
-                validate: {
-                    notNull: {
-                        message: "Loss is required",
-                    },
-                    notEmpty: {
-                        message: "Loss is required",
+                        message: "Loss Frequency is required",
                     },
                 },
             },

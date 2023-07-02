@@ -50,6 +50,27 @@
             </RouterLink>
           </li>
           <li>
+            <RouterLink to="/profile/balance">
+              <a
+                href="#"
+                :class="
+                  route.path === '/profile/balance'
+                    ? 'flex items-center p-2 text-green-500 bg-white rounded-lg dark:text-white dark:hover:bg-gray-700'
+                    : 'flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700'
+                "
+              >
+                <svg height="28" viewBox="0 0 48 48" width="28" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h48v48h-48z" fill="none" />
+                  <path
+                    :fill="route.path === '/profile/balance' ? '#22C55E' : '#FFFFFF'"
+                    d="M42 36v2c0 2.21-1.79 4-4 4h-28c-2.21 0-4-1.79-4-4v-28c0-2.21 1.79-4 4-4h28c2.21 0 4 1.79 4 4v2h-18c-2.21 0-4 1.79-4 4v16c0 2.21 1.79 4 4 4h18zm-18-4h20v-16h-20v16zm8-5c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"
+                  />
+                </svg>
+                <span class="flex-1 ml-2 whitespace-nowrap">Deposit/Withdraw</span>
+              </a>
+            </RouterLink>
+          </li>
+          <li>
             <RouterLink to="/profile/change-password">
               <a
                 href="#"
@@ -111,40 +132,46 @@
             </RouterLink>
           </li>
           <li>
-            <a
-              href="#"
-              class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700"
-            >
-              <svg
-                height="21px"
-                version="1.1"
-                viewBox="0 0 20 21"
-                width="20px"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+            <RouterLink to="/profile/history">
+              <a
+                href="#"
+                :class="
+                  route.path === '/profile/history'
+                    ? 'flex items-center p-2 text-green-500 bg-white rounded-lg dark:text-white dark:hover:bg-gray-700'
+                    : 'flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-green-500 dark:hover:bg-gray-700'
+                "
               >
-                <title />
-                <desc />
-                <defs />
-                <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
-                  <g
-                    fill="#FFFFFF"
-                    id="Core"
-                    opacity="0.9"
-                    transform="translate(-464.000000, -254.000000)"
-                  >
-                    <g id="history" transform="translate(464.000000, 254.500000)">
-                      <path
-                        d="M10.5,0 C7,0 3.9,1.9 2.3,4.8 L0,2.5 L0,9 L6.5,9 L3.7,6.2 C5,3.7 7.5,2 10.5,2 C14.6,2 18,5.4 18,9.5 C18,13.6 14.6,17 10.5,17 C7.2,17 4.5,14.9 3.4,12 L1.3,12 C2.4,16 6.1,19 10.5,19 C15.8,19 20,14.7 20,9.5 C20,4.3 15.7,0 10.5,0 L10.5,0 Z M9,5 L9,10.1 L13.7,12.9 L14.5,11.6 L10.5,9.2 L10.5,5 L9,5 L9,5 Z"
-                        id="Shape"
-                      />
+                <svg
+                  height="21px"
+                  version="1.1"
+                  viewBox="0 0 20 21"
+                  width="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <title />
+                  <desc />
+                  <defs />
+                  <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                    <g
+                      :fill="route.path === '/profile/history' ? '#22C55E' : '#FFFFFF'"
+                      id="Core"
+                      opacity="0.9"
+                      transform="translate(-464.000000, -254.000000)"
+                    >
+                      <g id="history" transform="translate(464.000000, 254.500000)">
+                        <path
+                          d="M10.5,0 C7,0 3.9,1.9 2.3,4.8 L0,2.5 L0,9 L6.5,9 L3.7,6.2 C5,3.7 7.5,2 10.5,2 C14.6,2 18,5.4 18,9.5 C18,13.6 14.6,17 10.5,17 C7.2,17 4.5,14.9 3.4,12 L1.3,12 C2.4,16 6.1,19 10.5,19 C15.8,19 20,14.7 20,9.5 C20,4.3 15.7,0 10.5,0 L10.5,0 Z M9,5 L9,10.1 L13.7,12.9 L14.5,11.6 L10.5,9.2 L10.5,5 L9,5 L9,5 Z"
+                          id="Shape"
+                        />
+                      </g>
                     </g>
                   </g>
-                </g>
-              </svg>
-              <span class="flex-1 ml-3 whitespace-nowrap">Logs</span>
-            </a>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">History</span>
+              </a>
+            </RouterLink>
           </li>
         </ul>
         <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">

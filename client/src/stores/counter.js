@@ -15,7 +15,9 @@ export const useMainStore = defineStore('main', {
     coinLaunches: '',
     launchWatchlists: '',
     newsDatas: '',
-    dashboardDatas: ''
+    dashboardDatas: '',
+    historyDatas: '',
+    balanceHistoryDatas: ''
   }),
   actions: {
     async login(form) {
@@ -588,6 +590,67 @@ export const useMainStore = defineStore('main', {
         this.dashboardDatas = response.data
       } catch (error) {
         console.log(error)
+      }
+    },
+
+    async fetchHistories() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/history`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.historyDatas = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async fetchBalanceHistory() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/balance`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.balanceHistoryDatas = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async addBalanceHistory(data) {
+      try {
+        if (data.transaction === 'Withdraw') {
+          data.amount = -data.amount
+        }
+        const response = await axios({
+          method: 'POST',
+          url: `${this.baseUrl}/balance/add`,
+          data: data,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${response.data.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.push('/profile/history')
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data.message}`
+        })
       }
     }
   }

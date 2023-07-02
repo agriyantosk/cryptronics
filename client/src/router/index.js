@@ -15,6 +15,8 @@ import EditProfileView from '../views/EditProfileView.vue'
 import ChangePasswordView from '../views/ChangePasswordView.vue'
 import NewsView from '../views/NewsView.vue'
 import TradingDashboardView from '../views/TradingDashboardView.vue'
+import HistoryView from '../views/HistoryView.vue'
+import BalanceView from '../views/BalanceView.vue'
 
 const routes = [
   {
@@ -88,6 +90,16 @@ const routes = [
     component: EditProfileView
   },
   {
+    path: '/profile/history',
+    name: 'history',
+    component: HistoryView
+  },
+  {
+    path: '/profile/balance',
+    name: 'balance',
+    component: BalanceView
+  },
+  {
     path: '/profile/change-password',
     name: 'changePassword',
     component: ChangePasswordView
@@ -96,7 +108,7 @@ const routes = [
     path: '/profile/dashboard',
     name: 'dashboard',
     component: TradingDashboardView
-  },
+  }
 ]
 
 const router = createRouter({

@@ -14,7 +14,8 @@ export const useMainStore = defineStore('main', {
     coinWatchlists: '',
     coinLaunches: '',
     launchWatchlists: '',
-    newsDatas: ''
+    newsDatas: '',
+    dashboardDatas: ''
   }),
   actions: {
     async login(form) {
@@ -570,6 +571,21 @@ export const useMainStore = defineStore('main', {
           url: 'https://newsdata.io/api/1/news?apikey=pub_21861e50fe3e8e27d167511c54400bf5ba419&country=au,us&q=crypto,finance,economics'
         })
         this.newsDatas = response.data.results
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async fetchDashboard() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${this.baseUrl}/dashboard`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.dashboardDatas = response.data
       } catch (error) {
         console.log(error)
       }

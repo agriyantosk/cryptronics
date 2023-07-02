@@ -5,12 +5,14 @@
     >
       Trading Dashboard
     </h1>
-    <BalanceCard />
-    <TradeActivityCard />
-    <TotalProfitCard />
-    <TotalLossCard />
-    <ROICard />
-    <RateCard />
+    <div class="grid grid-cols-3 justify-items-center">
+      <BalanceCard />
+      <TradeActivityCard />
+      <TotalProfitCard />
+      <TotalLossCard />
+      <ROICard />
+      <RateCard />
+    </div>
   </div>
 </template>
 

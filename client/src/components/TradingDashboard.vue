@@ -6,12 +6,15 @@
       Trading Dashboard
     </h1>
     <div class="grid grid-cols-3 justify-items-center">
-      <BalanceCard />
-      <TradeActivityCard />
-      <TotalProfitCard />
-      <TotalLossCard />
+      <BalanceCard :balance="mainStore.dashboardDatas.balance" />
+      <TradeActivityCard :activity="mainStore.dashboardDatas.fetchDashboard.activity" />
+      <TotalProfitCard :profit="mainStore.dashboardDatas.fetchDashboard.profit" />
+      <TotalLossCard :loss="mainStore.dashboardDatas.fetchDashboard.loss" />
       <ROICard />
-      <RateCard />
+      <RateCard
+        :profitFreq="mainStore.dashboardDatas.fetchDashboard.profitFreq"
+        :lossFreq="mainStore.dashboardDatas.fetchDashboard.lossFreq"
+      />
     </div>
   </div>
 </template>
@@ -23,6 +26,14 @@ import TotalProfitCard from './TotalProfitCard.vue'
 import TotalLossCard from './TotalLossCard.vue'
 import ROICard from './ROICard.vue'
 import RateCard from './RateCard.vue'
+import { useMainStore } from '../stores/counter'
+import { onBeforeMount } from 'vue'
+
+const mainStore = useMainStore()
+
+onBeforeMount(() => {
+  mainStore.fetchDashboard()
+})
 </script>
 
 <style lang="scss" scoped></style>

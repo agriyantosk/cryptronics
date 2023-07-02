@@ -8,14 +8,16 @@
         <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Total Profit
         </h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">
-          NANTI DISINI ADA TOTAL PROFIT
-        </p>
+        <p class="font-normal text-gray-700 dark:text-gray-400">{{ Number(profit).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</p>
       </a>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  props: ['profit']
+}
+</script>
 
 <style lang="scss" scoped></style>

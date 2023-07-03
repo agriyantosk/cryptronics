@@ -180,14 +180,15 @@
           <li>
             <a
               href="#"
-              class="flex items-center p-2 text-red-500 transition duration-75 rounded-lg hover:bg-green-500 dark:text-white group"
+              class="flex items-center p-2 text-red-500 transition duration-75 rounded-lg hover:bg-white dark:text-white group"
             >
               <svg
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
-                class="flex-shrink-0 w-6 h-6 text-red-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
+                class="flex-shrink-0 w-6 h-6 transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
               >
                 <path
+                  fill="#EF4444"
                   d="M32 464C32 490.5 53.5 512 80 512h288c26.5 0 48-21.5 48-48V128H32V464zM304 208C304 199.1 311.1 192 320 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM208 208C208 199.1 215.1 192 224 192s16 7.125 16 16v224c0 8.875-7.125 16-16 16s-16-7.125-16-16V208zM112 208C112 199.1 119.1 192 128 192s16 7.125 16 16v224C144 440.9 136.9 448 128 448s-16-7.125-16-16V208zM432 32H320l-11.58-23.16c-2.709-5.42-8.25-8.844-14.31-8.844H153.9c-6.061 0-11.6 3.424-14.31 8.844L128 32H16c-8.836 0-16 7.162-16 16V80c0 8.836 7.164 16 16 16h416c8.838 0 16-7.164 16-16V48C448 39.16 440.8 32 432 32z"
                 />
               </svg>
@@ -204,10 +205,6 @@
 import { onBeforeMount } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 const route = useRoute()
-
-// onBeforeMount(() => {
-//     console.log(route.path)
-// })
 </script>
 
 <style lang="scss" scoped></style>

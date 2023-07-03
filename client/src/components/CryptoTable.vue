@@ -40,8 +40,20 @@
                 Number(data.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
               }}
             </td>
-            <td class="px-6 py-4">
-              <div class="flex items-center">{{ data.change }}%</div>
+            <td class="px-6 py-4 flex gap-2">
+              <svg
+                height="20"
+                viewBox="0 0 512 512"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                :transform="data.change < 0 ? 'rotate(180)' : ''"
+              >
+                <path
+                  d="M464,464H48a16,16,0,0,1-14.07-23.62l208-384a16,16,0,0,1,28.14,0l208,384A16,16,0,0,1,464,464Z"
+                  :fill="data.change > 0 ? '#22C55E' : '#EF4444'"
+                />
+              </svg>
+              <span class="flex items-center"> {{ data.change }}% </span>
             </td>
             <td class="px-6 py-4">
               <div class="flex items-center">

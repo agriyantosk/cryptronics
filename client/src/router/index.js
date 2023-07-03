@@ -15,7 +15,6 @@ import EditProfileView from '../views/EditProfileView.vue'
 import ChangePasswordView from '../views/ChangePasswordView.vue'
 import NewsView from '../views/NewsView.vue'
 import TradingDashboardView from '../views/TradingDashboardView.vue'
-import HistoryView from '../views/HistoryView.vue'
 import BalanceView from '../views/BalanceView.vue'
 
 const routes = [
@@ -88,11 +87,6 @@ const routes = [
     path: '/profile/edit',
     name: 'editProfile',
     component: EditProfileView
-  },
-  {
-    path: '/profile/history',
-    name: 'history',
-    component: HistoryView
   },
   {
     path: '/profile/balance',

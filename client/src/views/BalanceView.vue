@@ -5,57 +5,51 @@
       <h1
         class="ml-6 my-10 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl underline underline-offset-3 decoration-8 decoration-green-500 dark:decoration-blue-600"
       >
-        Edit Profile
+        Deposit/Withdraw
       </h1>
-      <form class="ml-16 w-[40%]" @submit.prevent="handleSubmit">
-        <div class="mb-6 w-full">
-          <label for="base-input" class="block mb-2 text-sm font-medium text-white dark:text-white"
-            >Input Amount</label
-          >
-          <input
-            type="text"
-            id="base-input"
-            v-model="form.amount"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div class="mb-6 w-full flex justify-start">
-          <select
-            v-model="form.transaction"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[50%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      <div class="flex flex-col gap-8">
+        <div class="flex justify-center">
+          <div class="inline-flex rounded-md shadow-sm" role="group">
+            <button
+              autofocus
+              @click.prevent="switcher('Form')"
+              type="button"
+              class="py-2 px-4 text-sm font-medium text-white bg-transparent border border-gray-700 rounded-l-lg hover:bg-gray-100 hover:text-green-500 focus:outline-none focus:ring-2 focus:bg-white focus:text-green-500"
             >
-              Deposit
-            </option>
-            <option class="block mb-2 text-sm font-medium text-white dark:text-white">
-              Withdraw
-            </option>
-          </select>
+              Deposit/Withdraw
+            </button>
+            <button
+              @click.prevent="switcher('Transactions')"
+              type="button"
+              class="py-2 px-4 text-sm font-medium text-white bg-transparent border border-gray-700 rounded-r-md hover:bg-gray-100 hover:text-green-500 focus:outline-none focus:ring-2 focus:bg-white focus:text-green-500"
+            >
+              Logs
+            </button>
+          </div>
         </div>
-        <button
-          type="submit"
-          class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          Submit
-        </button>
-      </form>
+        <div class="mx-auto w-[90%]">
+          <div v-if="table === 'Form'">
+            <BalanceForm />
+          </div>
+          <div v-else-if="table === 'Transactions'">
+            <TransactionsTable />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import BalanceForm from '../components/BalanceForm.vue'
 import ProfileSideBar from '../components/ProfileSideBar.vue'
-import { useMainStore } from '../stores/counter'
-const mainStore = useMainStore()
-const form = {
-  transaction: '',
-  amount: ''
-}
+import TransactionsTable from '../components/TransactionsTable.vue'
 
-const handleSubmit = (event) => {
-  mainStore.addBalanceHistory(form)
+let table = ref('Form')
+
+const switcher = (val) => {
+  table.value = val
 }
 </script>
 

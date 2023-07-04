@@ -1,7 +1,11 @@
 <template>
-  <div v-for="data in mainStore.newsDatas" class="flex justify-center">
+  <div v-if="mainStore.loading === true">
+    <LoadingSpinner />
+  </div>
+  <div v-else v-for="data in mainStore.newsDatas" class="flex justify-center">
     <a
-      :href="data.link" target="_blank"
+      :href="data.link"
+      target="_blank"
       class="w-[70%] p-6 shadow hover:bg-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
       <div class="flex items-center gap-10">
@@ -25,6 +29,7 @@
 <script setup>
 import { onBeforeMount } from 'vue'
 import { useMainStore } from '../stores/counter'
+import LoadingSpinner from './LoadingSpinner.vue'
 
 const mainStore = useMainStore()
 

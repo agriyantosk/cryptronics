@@ -1,8 +1,8 @@
 <template>
-  <div v-for="data in mainStore.newsDatas">
+  <div v-for="data in mainStore.newsDatas" class="flex justify-center">
     <a
-      :href="data.link"
-      class="block w-[70%] p-6 shadow hover:bg-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      :href="data.link" target="_blank"
+      class="w-[70%] p-6 shadow hover:bg-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
       <div class="flex items-center gap-10">
         <div>{{ new Date(data.pubDate).toLocaleDateString('id-ID') }}</div>

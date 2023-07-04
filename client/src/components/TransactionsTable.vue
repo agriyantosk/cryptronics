@@ -1,7 +1,7 @@
 <template>
   <div>
-    <table class="text-left w-full border-white border rounded-xl">
-      <thead class="bg-[#181818] flex text-white w-full items-center">
+    <table class="text-left w-full">
+      <thead class="bg-[#181818] flex text-white w-full items-center rounded-2xl">
         <tr class="flex w-full mb-4">
           <th class="p-4 w-1/4">#</th>
           <th class="p-4 w-1/4">Transactions</th>
@@ -11,7 +11,7 @@
       </thead>
       <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
       <tbody
-        class="bg-[#181818] flex flex-col items-center justify-between overflow-y-scroll w-full"
+        class="bg-[#181818] rounded-b-2xl flex flex-col items-center justify-between overflow-y-scroll w-full"
         style="height: 50vh"
       >
         <tr

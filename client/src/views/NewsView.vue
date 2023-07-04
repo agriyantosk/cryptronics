@@ -11,7 +11,7 @@
       <p class="text-white text-xl">
         Insights into the biggest events shaping the crypto industry.
       </p>
-      <div class="mt-10 flex flex-col gap-6 items-center align-middle">
+      <div class="mt-10 gap-6">
         <NewsCard />
       </div>
     </div>

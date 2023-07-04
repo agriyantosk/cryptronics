@@ -17,7 +17,8 @@ export const useMainStore = defineStore('main', {
     newsDatas: '',
     dashboardDatas: '',
     historyDatas: '',
-    balanceHistoryDatas: ''
+    balanceHistoryDatas: '',
+    loading: true
   }),
   actions: {
     async login(form) {
@@ -77,6 +78,7 @@ export const useMainStore = defineStore('main', {
 
     async fetchCryptoData() {
       try {
+        this.loading = true
         const response = await axios({
           method: 'GET',
           url: 'https://coinranking1.p.rapidapi.com/coins',
@@ -95,6 +97,7 @@ export const useMainStore = defineStore('main', {
           }
         })
         this.cryptoDatas = response.data
+        this.loading = false
       } catch (error) {
         console.log(error)
       }
@@ -418,6 +421,7 @@ export const useMainStore = defineStore('main', {
 
     async fetchCoinLaunch() {
       try {
+        this.loading = true
         const response = await axios({
           method: 'GET',
           url: `${this.baseUrl}/launch/fetch-launches`,
@@ -426,6 +430,7 @@ export const useMainStore = defineStore('main', {
           }
         })
         this.coinLaunches = response.data.body
+        this.loading = false
       } catch (error) {
         console.log(error)
         Swal.fire({
@@ -568,11 +573,13 @@ export const useMainStore = defineStore('main', {
 
     async fetchNews() {
       try {
+        this.loading = true
         const response = await axios({
           method: 'GET',
           url: 'https://newsdata.io/api/1/news?apikey=pub_21861e50fe3e8e27d167511c54400bf5ba419&country=au,us&q=crypto,finance,economics'
         })
         this.newsDatas = response.data.results
+        this.loading = false
       } catch (error) {
         console.log(error)
       }

@@ -55,7 +55,12 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import LoggedNavbar from '../components/LoggedNavbar.vue'
+
+onMounted(() => {
+  initFlowbite()
+})
 </script>
 
 <style lang="scss" scoped></style>

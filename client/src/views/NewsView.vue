@@ -22,6 +22,11 @@
 import LoggedNavbar from '../components/LoggedNavbar.vue'
 import NewsCard from '../components/NewsCard.vue'
 import MarqueeGlobalStats from '../components/MarqueeGlobalStats.vue'
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  initFlowbite()
+})
 </script>
 
 <style lang="scss" scoped></style>

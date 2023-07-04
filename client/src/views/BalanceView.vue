@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import BalanceForm from '../components/BalanceForm.vue'
 import ProfileSideBar from '../components/ProfileSideBar.vue'
 import TransactionsTable from '../components/TransactionsTable.vue'
@@ -51,6 +51,10 @@ let table = ref('Form')
 const switcher = (val) => {
   table.value = val
 }
+
+onMounted(() => {
+  initFlowbite()
+})
 </script>
 
 <style lang="scss" scoped></style>

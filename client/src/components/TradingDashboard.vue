@@ -1,20 +1,26 @@
 <template>
-  <div class="ml-64">
+  <div class="ml-64 flex flex-col h-screen">
     <h1
-      class="ml-6 my-10 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl underline underline-offset-3 decoration-8 decoration-green-500 dark:decoration-blue-600"
+      class="ml-6 mt-10 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl underline underline-offset-3 decoration-8 decoration-green-500 dark:decoration-blue-600"
     >
       Trading Dashboard
     </h1>
-    <div class="grid grid-cols-3 justify-items-center">
-      <BalanceCard :balance="mainStore.dashboardDatas.balance" />
-      <TradeActivityCard :activity="mainStore.dashboardDatas.fetchDashboard?.activity" />
-      <TotalProfitCard :profit="mainStore.dashboardDatas.fetchDashboard?.profit" />
-      <TotalLossCard :loss="mainStore.dashboardDatas.fetchDashboard?.loss" />
-      <ROICard />
-      <RateCard
-        :profitFreq="mainStore.dashboardDatas.fetchDashboard?.profitFreq"
-        :lossFreq="mainStore.dashboardDatas.fetchDashboard?.lossFreq"
-      />
+    <div class="flex flex-grow">
+      <div class="flex flex-col w-[80%] mx-auto justify-evenly">
+        <div class="flex justify-evenly">
+          <RateCard
+            :profitFreq="mainStore.dashboardDatas.fetchDashboard?.profitFreq"
+            :lossFreq="mainStore.dashboardDatas.fetchDashboard?.lossFreq"
+          />
+          <BalanceCard :balance="mainStore.dashboardDatas.balance" :profit="mainStore.dashboardDatas.fetchDashboard?.profit" :loss="mainStore.dashboardDatas.fetchDashboard?.loss" />
+          <TotalProfitCard :profit="mainStore.dashboardDatas.fetchDashboard?.profit" />
+        </div>
+        <div class="flex justify-evenly">
+          <TotalLossCard :loss="mainStore.dashboardDatas.fetchDashboard?.loss" />
+          <TradeActivityCard :activity="mainStore.dashboardDatas.fetchDashboard?.activity" />
+          <!-- <ROICard /> -->
+        </div>
+      </div>
     </div>
   </div>
 </template>

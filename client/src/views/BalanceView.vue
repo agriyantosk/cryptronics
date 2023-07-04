@@ -31,7 +31,7 @@
           <div v-if="table === 'Form'">
             <BalanceForm />
           </div>
-          <div v-else-if="table === 'Transactions'">
+          <div v-else-if="table === 'Transactions'" class="border-white border rounded-2xl">
             <TransactionsTable />
           </div>
         </div>

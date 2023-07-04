@@ -110,4 +110,31 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from) => {
+  if (localStorage.access_token) {
+    if (to.name === 'landingPage' || to.name === 'signin' || to.name === 'signup') {
+      return { name: 'home' }
+    }
+  } else if (!localStorage.access_token) {
+    if (
+      to.name === 'home' ||
+      to.name === 'about' ||
+      to.name === 'calculator' ||
+      to.name === 'planner' ||
+      to.name === 'journal' ||
+      to.name === 'watchlist' ||
+      to.name === 'launch' ||
+      to.name === 'profile' ||
+      to.name === 'news' ||
+      to.name === 'addJournal' ||
+      to.name === 'editProfile' ||
+      to.name === 'balance' ||
+      to.name === 'changePassword' ||
+      to.name === 'dashboard'
+    ) {
+      return { name: 'signin' }
+    }
+  }
+})
+
 export default router

@@ -22,11 +22,6 @@
       </div>
 
       <div class="w-[60%]">
-        <button
-          class="text-white w-full bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-2xl text-sm px-5 py-4 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-10"
-        >
-          GOOGLE LOGIN BUTTON
-        </button>
         <SigninForm />
       </div>
       <div>

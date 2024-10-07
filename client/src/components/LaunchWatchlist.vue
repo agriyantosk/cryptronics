@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex-none grid grid-cols-4 gap-4">
+    <div class="flex flex-col md:grid md:grid-cols-4 gap-4">
       <div
         v-for="data in mainStore.launchWatchlists"
         class="w-full max-w-sm bg-[#181818] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -19,9 +19,7 @@
           }}</span>
           <br />
           <br />
-          <span class="text-sm text-gray-200 dark:text-gray-200"
-            >Rank: #{{ data.rank }}</span
-          >
+          <span class="text-sm text-gray-200 dark:text-gray-200">Rank: #{{ data.rank }}</span>
           <span class="text-sm text-gray-200 dark:text-gray-200">
             Event Date: {{ new Date(data.eventDate).toLocaleDateString('id-ID') }}</span
           >
@@ -37,9 +35,7 @@
             >
             <a
               href="#"
-              @click.prevent="
-                mainStore.deleteLaunchWatchlist(data.id)
-              "
+              @click.prevent="mainStore.deleteLaunchWatchlist(data.id)"
               class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-green-500 border border-green-500 rounded-2xl hover:bg-green-400"
               >Delete Watchlist</a
             >

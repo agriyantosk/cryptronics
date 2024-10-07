@@ -2,11 +2,11 @@
   <div>
     <div class="p-4">
       <div class="px-6 mb-6">
-        <h1 class="text-white text-2xl font-bold">Today's Highlights by Cryptronics</h1>
+        <h1 class="text-white text-lg md:text-2xl font-bold">Today's Highlights by Cryptronics</h1>
       </div>
       <!-- INI BAGIAN CARD YANG HIGHLIGHT -->
-      <div class="flex justify-evenly gap-10">
-        <div class="w-[35%]">
+      <div class="flex flex-col md:flex-row justify-evenly gap-10 w-full">
+        <div class="md:w-[35%] w-full">
           <!-- BEST COINS -->
           <div
             class="w-full p-2 bg-gray-800 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="w-[35%]">
+        <div class="md:w-[35%] w-full">
           <!-- NEWEST COINS -->
           <div
             class="w-full p-2 bg-gray-800 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"

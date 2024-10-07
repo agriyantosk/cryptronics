@@ -16,14 +16,12 @@
             <div class="flex items-center gap-2">
               <p
                 :class="
-                  this.gap > 0
+                  gap > 0
                     ? 'font-bold text-xl text-green-500 dark:text-gray-400'
                     : 'font-bold text-xl text-red-500 dark:text-gray-400'
                 "
               >
-                {{
-                  Number(this.gap).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-                }}
+                {{ Number(gap).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
               </p>
             </div>
             <p class="font-bold text-xl text-center text-white dark:text-gray-400">
@@ -39,9 +37,10 @@
 <script>
 export default {
   props: ['balance', 'profit', 'loss'],
-  data() {
-    return {
-      gap: +this.profit + +this.loss
+  computed: {
+    // Calculating the gap dynamically based on the profit and loss values.
+    gap() {
+      return this.profit - this.loss
     }
   }
 }

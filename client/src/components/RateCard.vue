@@ -4,11 +4,9 @@
       href="#"
       class="p-4 flex flex-col gap-4 bg-gray-800 border w-80 h-80 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
-      <h5 class="text-2xl font-bold tracking-tight text-white dark:text-white">
-        Profit/Loss Rate
-      </h5>
+      <h5 class="text-2xl font-bold tracking-tight text-white dark:text-white">Profit/Loss Rate</h5>
       <div class="chart-container w-[50%] h-[50%] mx-auto">
-        <canvas id="chart" class="w-full h-full"></canvas>
+        <canvas ref="chartCanvas" class="w-full h-full"></canvas>
       </div>
       <div class="flex flex-col text-center gap-2">
         <div class="flex justify-between border-b border-b-gray-500 pb-2">
@@ -17,9 +15,7 @@
             <p class="font-normal text-white dark:text-gray-400">Profit</p>
           </div>
           <div>
-            <p class="font-normal text-white dark:text-gray-400">
-              {{ this.profitRate.toFixed(2) }}%
-            </p>
+            <p class="font-normal text-white dark:text-gray-400">{{ profitRate.toFixed(2) }}%</p>
           </div>
         </div>
         <div class="flex justify-between pt-1">
@@ -28,9 +24,7 @@
             <p class="font-normal text-white dark:text-gray-400">Loss</p>
           </div>
           <div>
-            <p class="font-normal text-white dark:text-gray-400">
-              {{ this.lossRate.toFixed(2) }}%
-            </p>
+            <p class="font-normal text-white dark:text-gray-400">{{ lossRate.toFixed(2) }}%</p>
           </div>
         </div>
       </div>
@@ -39,7 +33,8 @@
 </template>
 
 <script>
-import Chart from 'chart.js/auto'
+import { Chart } from 'chart.js/auto'
+
 export default {
   props: ['profitFreq', 'lossFreq'],
   data() {
@@ -76,8 +71,11 @@ export default {
       }
     }
 
-    const ctx = document.getElementById('chart')
-    const chart = new Chart(ctx, config)
+    // Access the canvas using `this.$refs`
+    const ctx = this.$refs.chartCanvas.getContext('2d')
+
+    // Create the chart
+    new Chart(ctx, config)
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-x-auto">
     <!-- <pre>{{ mainStore?.journals }}</pre> -->
     <table class="w-full text-sm text-left text-white dark:text-gray-400">
       <thead

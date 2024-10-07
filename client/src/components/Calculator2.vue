@@ -1,6 +1,6 @@
 <template>
   <!-- <pre>{{ mainStore.cryptoDatas.data.coins }}</pre> -->
-  <div class="mx-[20%] my-10">
+  <div class="mx-[5%] md:mx-[20%] my-10">
     <form @submit="handleSubmit">
       <label for="cryptoName" class="inline-block mb-2 font-semibold">Cryptocurrency</label>
       <select
@@ -50,7 +50,9 @@
         style="appearance: none"
         required
       />
-      <div class="flex justify-between items-center">
+      <div
+        class="flex md:justify-between md:items-center flex-col-reverse md:flex-row md:justify-center"
+      >
         <div>
           <h1 class="text-white text-2xl">
             Exit Price:
@@ -62,7 +64,7 @@
             }}
           </h1>
         </div>
-        <div>
+        <div class="flex justify-evenly md:flex md:justiy-center md:items-center">
           <button
             @click.prevent="calc(form)"
             type="button"
@@ -103,7 +105,7 @@ const calc = (form) => {
   form.exitPrice = form.entryPrice + form.entryPrice * (form.percentage / 100)
   form.targetProfit = form.investment + form.investment * (form.percentage / 100)
   form.ratio = (form.exitPrice - form.entryPrice) / (form.entryPrice - form.stopLoss)
-  form.tradeWeight = (form.investment / form.entryPrice)
+  form.tradeWeight = form.investment / form.entryPrice
   result.value = form.exitPrice
 }
 

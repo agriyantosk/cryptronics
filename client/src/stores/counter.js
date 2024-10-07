@@ -578,6 +578,7 @@ export const useMainStore = defineStore('main', {
           method: 'GET',
           url: 'https://newsdata.io/api/1/news?apikey=pub_21861e50fe3e8e27d167511c54400bf5ba419&country=au,us&q=crypto,finance,economics'
         })
+        console.log(response, '>>>')
         this.newsDatas = response.data.results
         this.loading = false
       } catch (error) {

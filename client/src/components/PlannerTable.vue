@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-x-auto">
     <table class="w-full text-sm text-left text-white dark:text-gray-400">
       <thead
         class="text-xs border-y border-gray-700 py-4 text-white uppercase bg-[#181818] dark:bg-gray-700 dark:text-gray-400"
@@ -42,7 +42,7 @@
             {{ data.status }}
           </td>
           <td class="px-6 py-4 text-center">
-            <div class="flex justify-evenly">
+            <div class="flex justify-evenly gap-3 md:gap-0">
               <!-- <span
                 ><button class="bg-green-500 hover:bg-green-400 rounded-lg px-4 py-2">
                   Edit

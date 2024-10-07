@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 gap-4">
+  <div class="flex flex-col md:grid md:grid-cols-4 gap-4">
     <div
       v-for="data in mainStore.coinWatchlists"
       class="w-full max-w-sm bg-[#181818] border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"

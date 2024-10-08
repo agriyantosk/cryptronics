@@ -9,7 +9,7 @@ const env = process.env.NODE_ENV
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    baseUrl: env === 'development' ? 'http://localhost:3000' : process.env.BASE_URL,
+    baseUrl: process.env.BASE_URL,
     access_token: '',
     userInfo: '',
     cryptoDatas: '',

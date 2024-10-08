@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "cryptonics_db",
-    "host": "127.0.0.1",
+    "host": "159.223.32.175",
     "dialect": "postgres"
   },
   "test": {

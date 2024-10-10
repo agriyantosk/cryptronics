@@ -5,11 +5,11 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const env = process.env.NODE_ENV
+const apiUrl = import.meta.env.VITE_BASE_URL
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    baseUrl: process.env.BASE_URL,
+    baseUrl: apiUrl,
     access_token: '',
     userInfo: '',
     cryptoDatas: '',
